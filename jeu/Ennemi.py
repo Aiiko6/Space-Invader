@@ -45,7 +45,7 @@ class Ennemi:
         if self.position[0] > 750:
             self.position = (self.position[0], self.position[1] + self.vitesseY)
             self.sens = 1
-        elif self.position[0] < 50:
+        elif self.position[0] < 0:
             self.sens = 0
             self.position = (self.position[0], self.position[1] + self.vitesseY)
 

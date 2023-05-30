@@ -16,7 +16,7 @@ class Partie:
         self.monVaisseau = Vaisseau
         self.monMissile = Missile
 
-        self.nbEnnemis = 3
+        self.nbEnnemis = 30
         self.ennemis = []
 
         self.score = 0
@@ -69,7 +69,9 @@ class Partie:
             self.ennemis.append(Ennemi())
 
     def restart(self):
+        for e in range(len(self.ennemis)):
+            self.ennemis.pop()
+        self.score = 0
         self.nbEnnemis = 3
+
         self.monMissile = Missile(1200)
-        for e in self.nbEnnemis:
-            self.ennemis[e] = ""
