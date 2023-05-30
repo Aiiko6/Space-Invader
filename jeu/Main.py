@@ -3,11 +3,10 @@ from jeu.Etat import Etat
 from jeu.IHM.PageMenu import PageMenu
 from jeu.Partie import Partie
 
-couleur = (255,255,255)
+couleur = (0,0,0)
 
 def setup():
     core.fps = 60
-
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu",PageMenu())
 
@@ -24,20 +23,13 @@ def run():
 
     if core.memory('etat') == Etat.MENU:
         core.memory("PageMenu").update()
-        #print('menu')
 
-        if core.getMouseLeftClick():
-            core.memory('etat',Etat.JEU)
 
     if core.memory('etat') == Etat.JEU:
         #print('jeu')
         core.memory("maPartie").addEnnemis()
         core.memory("maPartie").show()
         core.memory("maPartie").update()
-
-        if core.getMouseRightClick():
-            core.memory('etat',Etat.MENU)
-
 
 
 

@@ -2,9 +2,9 @@ from pygame import Vector2
 
 import core
 from jeu.Ennemi import Ennemi
+from jeu.Etat import Etat
 from jeu.Missile import Missile
 from jeu.Vaisseau import Vaisseau
-
 
 
 class Partie:
@@ -22,7 +22,7 @@ class Partie:
         self.score = 0
 
     def addJoueur(self):
-            self.monVaisseau = Vaisseau()
+        self.monVaisseau = Vaisseau()
 
     def addMissile(self):
         self.monMissile = Missile(1200)
@@ -31,7 +31,7 @@ class Partie:
         self.monVaisseau.show()
 
     def update(self):
-        core.Draw.text(self.couleur, 'score: ' + str(self.score),(10,10))
+        core.Draw.text(self.couleur, 'score: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
         if core.getKeyPressList("g"):
             self.tirer()
@@ -42,6 +42,9 @@ class Partie:
         self.monMissile.collision()
         self.updateEnnemis()
 
+        if core.getKeyPressList('ESCAPE'):
+            core.memory('etat', Etat.MENU)
+
     def updateEnnemis(self):
         for e in self.ennemis:
             e.edge()
@@ -51,10 +54,7 @@ class Partie:
                 self.score = self.score + 1
                 print(str(self.score))
                 if (self.score > 10):
-                    self.nbEnnemis = self.score/10 + 3
-
-
-
+                    self.nbEnnemis = self.score / 10 + 3
 
     def tirer(self):
         self.monMissile.deplacementMissile(self.monVaisseau.getPosX())

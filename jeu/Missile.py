@@ -4,19 +4,21 @@ import core
 class Missile:
     def __init__(self,coordX): #constructeur
         self.vitesse = 10
-        self.couleur = (255, 0, 0)
         self.position =(coordX,550)
         self.mass = 5
 
         self.lance = False
 
-
+        core.memory("textureMissile", core.Texture("./Image/Missile.png", self.position, 0, (8, 15)))
 
     def show(self):
-        core.Draw.circle(self.couleur,self.position,self.mass)
+        if not core.memory("textureMissile").ready:
+            core.memory("textureMissile").load()
+        core.memory("textureMissile").pos = self.position
+        core.memory("textureMissile").show()
 
     def deplacementMissile(self,X):
-        self.position = ( X , 550)
+        self.position = ( X +25-4, 550)
 
     def trajectoire(self):
         if (self.position[0] > 0) and (self.position[0] < 800):

@@ -9,15 +9,19 @@ class Ennemi:
     def __init__(self):  # constructeur
         self.vitesse = 5
         self.vitesseY = 50
-        self.couleur = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         self.position = (random.randint(0, 700), 100)
         self.mass = 20
 
         #0 = Droite 1 = Gauche
         self.sens = 0
 
+        core.memory("textureEnemy", core.Texture("./Image/Enemy.png", self.position, 0, (50, 50)))
+
     def show(self):
-        core.Draw.circle(self.couleur, self.position, self.mass)
+        if not core.memory("textureEnemy").ready:
+            core.memory("textureEnemy").load()
+        core.memory("textureEnemy").pos = self.position
+        core.memory("textureEnemy").show()
 
     def deplacementEnnemi(self):
         if self.sens == 0:
@@ -27,7 +31,7 @@ class Ennemi:
             self.position = (self.position[0] - self.vitesse, self.position[1])
 
     def collisionMissile(self, missile):
-        pos1 = Vector2(self.position)
+        pos1 = Vector2(self.position) +(25,25)
         pos2 = Vector2(missile.position)
         distance = pos1 - pos2
         if self.mass + missile.mass > distance.length():
