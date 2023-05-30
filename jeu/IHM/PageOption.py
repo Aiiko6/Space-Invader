@@ -33,17 +33,17 @@ class PageOption:
         if (self.startMenu == 0) or (not core.getMouseLeftClick()):
             self.startMenu = 0
             if core.getMouseLeftClick() and self.distanceCheck(self.bp):
+                self.startMenu = 1
                 core.memory('etat', Etat.SKIN)
-                core.memory("OptionPage").startMenu = 1
             if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
+                self.startMenu = 1
                 core.memory('etat', Etat.GRAPHI)
-                core.memory("OptionPage").startMenu = 1
             if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
+                self.startMenu = 1
                 core.memory('etat', Etat.COM)
-                core.memory("OptionPage").startMenu = 1
             if core.getMouseLeftClick() and self.distanceCheck(self.bp3):
+                self.startMenu = 1
                 core.memory('etat', Etat.MENU)
-                core.memory("OptionPage").startMenu = 1
 
     def distanceCheck(self, bouton):
         pos1 = Vector2(self.mouse)
