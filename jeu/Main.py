@@ -1,6 +1,7 @@
 import core
 from jeu.Etat import Etat
 from jeu.IHM.PageMenu import PageMenu
+from jeu.IHM.PageOption import PageOption
 from jeu.IHM.PauseMenu import PauseMenu
 from jeu.Partie import Partie
 
@@ -11,6 +12,7 @@ def setup():
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu",PageMenu())
     core.memory("PausePage", PauseMenu())
+    core.memory("OptionPage", PageOption())
 
     #Declaration variable Partie
     core.memory("maPartie", Partie())
@@ -28,6 +30,9 @@ def run():
 
     if core.memory('etat') == Etat.PAUSE:
         core.memory("PausePage").update()
+
+    if core.memory('etat') == Etat.OPTION:
+        core.memory("OptionPage").update()
 
     if core.memory('etat') == Etat.JEU:
         #print('jeu')

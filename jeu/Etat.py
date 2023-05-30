@@ -8,3 +8,6 @@ class Etat(Enum):
     SCORE = 3
     PAUSE = 4
     OPTION = 5
+    SKIN = 6
+    GRAPHI = 7
+    COM = 8
