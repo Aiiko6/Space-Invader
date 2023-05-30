@@ -29,11 +29,13 @@ class PageMenu:
         core.Draw.text(self.couleur, 'Jouer ', (340, 180))
 
         self.bp1.show()
+        if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
+            core.memory('etat', Etat.OPTION)
         core.Draw.text(self.couleur, 'Parametres ', (340, 280))
 
         self.bp2.show()
         if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
-
+            print('Quitter')
         core.Draw.text(self.couleur, 'Quitter ', (340, 380))
 
     def distanceCheck(self, bouton):
