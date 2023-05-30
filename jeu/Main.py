@@ -4,6 +4,7 @@ from jeu.IHM.PageGameOver import PageGameOver
 from jeu.IHM.PageGraphique import PageGraphique
 from jeu.IHM.PageMenu import PageMenu
 from jeu.IHM.PageOption import PageOption
+from jeu.IHM.PageSkin import PageSkin
 from jeu.IHM.PauseMenu import PauseMenu
 from jeu.Partie import Partie
 
@@ -17,6 +18,7 @@ def setup():
     core.memory("OptionPage", PageOption())
     core.memory("PageGameOver",PageGameOver())
     core.memory("GraphiPage", PageGraphique())
+    core.memory("SkinPage", PageSkin())
 
     #Declaration variable Partie
     core.memory("maPartie", Partie())
@@ -40,6 +42,9 @@ def run():
 
     if core.memory('etat') == Etat.GRAPHI:
         core.memory("GraphiPage").update()
+
+    if core.memory('etat') == Etat.SKIN:
+        core.memory("SkinPage").update()
 
     if core.memory('etat') == Etat.JEU:
         #print('jeu')
