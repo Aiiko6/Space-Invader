@@ -3,6 +3,7 @@ import random
 from pygame import Vector2
 
 import core
+from jeu.Etat import Etat
 
 
 class Ennemi:
@@ -47,3 +48,10 @@ class Ennemi:
         elif self.position[0] < 50:
             self.sens = 0
             self.position = (self.position[0], self.position[1] + self.vitesseY)
+
+    def collisionJoueur(self,Joueur):
+        pos1 = Vector2(self.position)
+        pos2 = Vector2(Joueur.position)
+        distance = pos1 - pos2
+        if self.mass + Joueur.mass > distance.length():
+            core.memory('etat', Etat.GAMEOVER)

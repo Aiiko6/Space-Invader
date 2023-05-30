@@ -21,6 +21,10 @@ class Partie:
 
         self.score = 0
 
+
+
+
+
     def addJoueur(self):
         self.monVaisseau = Vaisseau()
 
@@ -55,6 +59,7 @@ class Partie:
                 print(str(self.score))
                 if (self.score > 10):
                     self.nbEnnemis = self.score / 10 + 3
+            e.collisionJoueur(self.monVaisseau)
 
     def tirer(self):
         self.monMissile.deplacementMissile(self.monVaisseau.getPosX())
