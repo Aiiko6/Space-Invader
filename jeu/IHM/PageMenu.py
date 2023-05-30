@@ -35,7 +35,8 @@ class PageMenu:
 
         self.bp2.show()
         if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
-            print('Quitter')
+            pygame.quit()
+            sys.exit()
         core.Draw.text(self.couleur, 'Quitter ', (340, 380))
 
     def distanceCheck(self, bouton):
