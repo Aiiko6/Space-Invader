@@ -8,39 +8,42 @@ from jeu.IHM.Bouton import Bouton
 
 class PageOption:
     def __init__(self):  # constructeur
-        self.couleur = (255,255,255)
-        self.bp = Bouton(300,200)
+        self.couleur = (255, 255, 255)
+        self.bp = Bouton(300, 200)
         self.bp1 = Bouton(300, 300)
         self.bp2 = Bouton(300, 400)
         self.bp3 = Bouton(300, 500)
         self.mouse = pygame.mouse.get_pos()
         self.massCursor = 2
-
+        self.startMenu = 1
 
     def update(self):
+
         self.mouse = pygame.mouse.get_pos()
-
         core.Draw.text(self.couleur, 'Option :', (300, 10))
-
         self.bp.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp):
-            core.memory('etat', Etat.SKIN)
         core.Draw.text(self.couleur, 'Skin ', (340, 180))
-
         self.bp1.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
-            core.memory('etat', Etat.GRAPHI)
         core.Draw.text(self.couleur, 'Graphisme ', (340, 280))
-
         self.bp2.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
-            core.memory('etat', Etat.COM)
         core.Draw.text(self.couleur, 'Commande ', (340, 380))
-
         self.bp3.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp3):
-            core.memory('etat', Etat.MENU)
         core.Draw.text(self.couleur, 'Retour ', (340, 480))
+
+        if (self.startMenu == 0) or (not core.getMouseLeftClick()):
+            self.startMenu = 0
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp):
+                self.startMenu = 1
+                core.memory('etat', Etat.SKIN)
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
+                self.startMenu = 1
+                core.memory('etat', Etat.GRAPHI)
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
+                self.startMenu = 1
+                core.memory('etat', Etat.COM)
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp3):
+                self.startMenu = 1
+                core.memory('etat', Etat.MENU)
 
     def distanceCheck(self, bouton):
         pos1 = Vector2(self.mouse)

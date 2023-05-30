@@ -16,28 +16,31 @@ class PageMenu:
         self.bp2 = Bouton(300, 400)
         self.mouse = pygame.mouse.get_pos()
         self.massCursor = 2
+        self.startMenu = 1
 
 
     def update(self):
         self.mouse = pygame.mouse.get_pos()
-
         core.Draw.text(self.couleur, 'Space invader: ', (300, 10))
-
         self.bp.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp):
-            core.memory('etat', Etat.JEU)
         core.Draw.text(self.couleur, 'Jouer ', (340, 180))
-
         self.bp1.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
-            core.memory('etat', Etat.OPTION)
         core.Draw.text(self.couleur, 'Parametres ', (340, 280))
-
         self.bp2.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
-            pygame.quit()
-            sys.exit()
         core.Draw.text(self.couleur, 'Quitter ', (340, 380))
+
+        if (self.startMenu == 0) or (not core.getMouseLeftClick()):
+            self.startMenu = 0
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp):
+                self.startMenu = 1
+                core.memory('etat', Etat.JEU)
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
+                self.startMenu = 1
+                core.memory('etat', Etat.OPTION)
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
+                self.startMenu = 1
+                pygame.quit()
+                sys.exit()
 
     def distanceCheck(self, bouton):
         pos1 = Vector2(self.mouse)
