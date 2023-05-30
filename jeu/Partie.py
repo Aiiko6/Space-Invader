@@ -43,7 +43,7 @@ class Partie:
         self.updateEnnemis()
 
         if core.getKeyPressList('ESCAPE'):
-            core.memory('etat', Etat.MENU)
+            core.memory('etat', Etat.PAUSE)
 
     def updateEnnemis(self):
         for e in self.ennemis:

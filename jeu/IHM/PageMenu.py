@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from pygame import Vector2
 
@@ -11,6 +13,7 @@ class PageMenu:
         self.couleur = (255,255,255)
         self.bp = Bouton(300,200)
         self.bp1 = Bouton(300, 300)
+        self.bp2 = Bouton(300, 400)
         self.mouse = pygame.mouse.get_pos()
         self.massCursor = 2
 
@@ -19,13 +22,19 @@ class PageMenu:
         self.mouse = pygame.mouse.get_pos()
 
         core.Draw.text(self.couleur, 'Space invader: ', (300, 10))
+
         self.bp.show()
         if core.getMouseLeftClick() and self.distanceCheck(self.bp):
             core.memory('etat', Etat.JEU)
-
         core.Draw.text(self.couleur, 'Jouer ', (340, 180))
+
         self.bp1.show()
         core.Draw.text(self.couleur, 'Parametres ', (340, 280))
+
+        self.bp2.show()
+        if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
+
+        core.Draw.text(self.couleur, 'Quitter ', (340, 380))
 
     def distanceCheck(self, bouton):
         pos1 = Vector2(self.mouse)
