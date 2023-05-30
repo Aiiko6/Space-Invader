@@ -60,7 +60,7 @@ class Partie:
                 self.score = self.score + 1
                 print(str(self.score))
                 if (self.score > 10):
-                    self.nbEnnemis = self.score / 10 + 3
+                    self.nbEnnemis = self.score / 5  + 3
             e.collisionJoueur(self.monVaisseau)
 
     def tirer(self):

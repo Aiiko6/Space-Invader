@@ -40,7 +40,7 @@ class PageGameOver:
             sys.exit()
 
         self.score = core.memory("maPartie").get_score()
-        core.Draw.text(self.couleur, 'score: ' + str(self.score), (340, 280))
+        core.Draw.text(self.couleur, 'Score: ' + str(self.score), (340, 280))
 
         core.Draw.text(self.couleur, 'Exit ', (340, 380))
 
