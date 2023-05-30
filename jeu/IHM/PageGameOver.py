@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from pygame import Vector2
 
@@ -16,19 +18,20 @@ class PageGameOver:
 
 
     def update(self):
-        core.Draw.text(self.couleur, 'Reprendre ', (340, 180))
+        core.Draw.text(self.couleur, 'Game OVER ', (320, 10))
         self.mouse = pygame.mouse.get_pos()
 
-        core.Draw.text(self.couleur, 'Pause :', (300, 10))
 
         self.bp.show()
         if core.getMouseLeftClick() and self.distanceCheck(self.bp):
+            core.memory("maPartie").restart()
             core.memory('etat', Etat.JEU)
-        core.Draw.text(self.couleur, 'Reprendre ', (340, 180))
+        core.Draw.text(self.couleur, 'Rejouer ', (340, 180))
 
         self.bp1.show()
         if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
-            core.memory('etat', Etat.MENU)
+            pygame.quit()
+            sys.exit()
         core.Draw.text(self.couleur, 'Exit ', (340, 280))
 
     def distanceCheck(self, bouton):

@@ -37,7 +37,7 @@ class Partie:
     def update(self):
         core.Draw.text(self.couleur, 'score: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
-        if core.getKeyPressList("g"):
+        if core.getKeyPressList('SPACE'):
             self.tirer()
         self.monVaisseau.show()
         self.monMissile.show()
@@ -67,3 +67,9 @@ class Partie:
     def addEnnemis(self):
         if len(self.ennemis) < self.nbEnnemis:
             self.ennemis.append(Ennemi())
+
+    def restart(self):
+        self.nbEnnemis = 3
+        self.monMissile = Missile(1200)
+        for e in self.nbEnnemis:
+            self.ennemis[e] = ""
