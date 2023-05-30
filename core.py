@@ -199,6 +199,7 @@ def main(setupf, runf):
                     mouseclickright = event.pos
 
 
+
             elif event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     mouseclickL = False
