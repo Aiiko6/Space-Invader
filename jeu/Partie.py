@@ -16,7 +16,7 @@ class Partie:
         self.monVaisseau = Vaisseau
         self.monMissile = Missile
 
-        self.nbEnnemis = 30
+        self.nbEnnemis = 3
         self.ennemis = []
 
         self.score = 0
@@ -39,6 +39,8 @@ class Partie:
         self.monVaisseau.deplacement()
         if core.getKeyPressList('SPACE'):
             self.tirer()
+
+
         self.monVaisseau.show()
         self.monMissile.show()
 
@@ -75,3 +77,6 @@ class Partie:
         self.nbEnnemis = 3
 
         self.monMissile = Missile(1200)
+
+    def get_score(self):
+        return self.score
