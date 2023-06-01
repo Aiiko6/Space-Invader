@@ -20,7 +20,7 @@ class Partie:
         self.MissileAntiRebond = 1
 
         self.score = 0
-        # core.memory("son", core.Sound("./Sound/piouu1.mp3"))
+        core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
     def addJoueur(self):
         self.monVaisseau = Vaisseau()
@@ -36,17 +36,12 @@ class Partie:
     def update(self):
         core.Draw.text(self.couleur, 'Score: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
-
         if (self.MissileAntiRebond == 0) or (not core.getKeyPressList('SPACE')):
             self.MissileAntiRebond = 0
             if core.getKeyPressList('SPACE'):
                 self.MissileAntiRebond = 1
                 self.tirer()
-
-
-
         self.monVaisseau.show()
-
         for i in self.monMissile:
             i.show()
             i.trajectoire()
@@ -72,13 +67,12 @@ class Partie:
             e.collisionJoueur(self.monVaisseau)
 
     def tirer(self):
-
         for i in self.monMissile:
             if not i.isAlive():
                 i.alive = True
-                # core.memory("son").pause()
-                # core.memory("son").rewind()
-                # core.memory("son").start()
+                core.memory("son").pause()
+                core.memory("son").rewind()
+                core.memory("son").start()
                 i.deplacementMissile(self.monVaisseau.getPosX())
                 break
 

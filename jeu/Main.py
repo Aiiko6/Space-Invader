@@ -1,7 +1,10 @@
+import sys
+
 import pygame
 
 import core
 from jeu.Etat import Etat
+from jeu.IHM.FrontMontant import frontMontant
 from jeu.IHM.PageCommande import PageCommande
 from jeu.IHM.PageGameOver import PageGameOver
 from jeu.IHM.PageGraphique import PageGraphique
@@ -10,6 +13,8 @@ from jeu.IHM.PageOption import PageOption
 from jeu.IHM.PageSkin import PageSkin
 from jeu.IHM.PauseMenu import PauseMenu
 from jeu.Partie import Partie
+
+
 
 def setup():
 
@@ -31,6 +36,11 @@ def setup():
 
     core.memory("maPartie").addJoueur()
     core.memory("maPartie").addMissile()
+
+    core.memory("previous_mouse_state", False)
+    core.memory("current_mouse_state", False)
+
+    core.memory("gestionFront",frontMontant())
 
 
 def run():
@@ -68,6 +78,11 @@ def run():
 
     if core.memory('etat') == Etat.COM:
         core.memory("PageCommande").update()
+
+    if core.memory('etat')== Etat.DESTROY:
+        pygame.quit()
+        sys.exit()
+
 
 
 
