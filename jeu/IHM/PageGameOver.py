@@ -30,8 +30,7 @@ class PageGameOver:
         self.bp.show()
         if core.getMouseLeftClick() and self.distanceCheck(self.bp):
             core.memory("maPartie").restart()
-            core.memory("maPartie").addEnnemis()
-            core.memory('etat', Etat.MENU)
+
         core.Draw.text(self.couleur, 'Rejouer ', (340, 180))
 
         self.bp1.show()
