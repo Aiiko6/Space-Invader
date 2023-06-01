@@ -8,7 +8,7 @@ class Bouton:
         self.couleur = (255, 255, 255)
         self.mass = 20
         self.position = (coordX, coordY)
-        self.positionImage = (coordX - self.mass/2 , coordY - self.mass/2)
+        self.positionImage = (coordX - 50/2 , coordY - 50/2)
         self.Skin = core.Texture(URL, self.positionImage, 0, (50, 50))
         self.startMenu = 1
 
