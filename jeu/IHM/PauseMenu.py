@@ -8,8 +8,8 @@ from jeu.IHM.Bouton import Bouton
 
 class PauseMenu:
     def __init__(self):  # constructeur
-        self.couleur = (255,255,255)
-        self.bp = Bouton(300,200)
+        self.couleur = (255, 255, 255)
+        self.bp = Bouton(300, 200)
         self.bp1 = Bouton(300, 300)
         self.mouse = core.getMouseLocation()
         self.massCursor = 2

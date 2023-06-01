@@ -11,10 +11,6 @@ from jeu.IHM.PageSkin import PageSkin
 from jeu.IHM.PauseMenu import PauseMenu
 from jeu.Partie import Partie
 
-couleur = (0,0,0)
-background = pygame.image.load("./Image/Fond_ecran800.png")
-core.memory("TextureVaisseau", core.Texture('./Image/Vaisseau.png', (0,0), 0, (50, 50)))
-
 def setup():
 
     core.fps = 60
@@ -29,6 +25,9 @@ def setup():
     #Declaration variable Partie
     core.memory("maPartie", Partie())
     core.WINDOW_SIZE = [800, 600]
+    global background
+    background = core.Texture("./Image/Fond_ecran800.png", (0, 0), 0, core.WINDOW_SIZE)
+    core.memory("TextureVaisseau", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
 
     core.memory("maPartie").addJoueur()
     core.memory("maPartie").addMissile()
@@ -38,7 +37,10 @@ def run():
     global background
     core.cleanScreen()
 
-    core.screen.blit(background.convert(),(0,0))
+    if not background.ready:
+        background.load()
+    background.show()
+
 
     if core.memory('etat') == Etat.MENU:
         core.memory("PageMenu").update()
