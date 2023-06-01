@@ -11,3 +11,4 @@ class Etat(Enum):
     SKIN = 6
     GRAPHI = 7
     COM = 8
+    ACHAT = 9

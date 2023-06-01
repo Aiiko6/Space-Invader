@@ -1,10 +1,13 @@
 from pygame import Vector2
 
 import core
+from jeu.Coin import Coin
 from jeu.Ennemi import Ennemi
 from jeu.Etat import Etat
 from jeu.Missile import Missile
 from jeu.Vaisseau import Vaisseau
+
+from random import randint
 
 
 class Partie:
@@ -18,9 +21,11 @@ class Partie:
         self.nbEnnemis = 3
         self.ennemis = []
         self.MissileAntiRebond = 1
+        self.Coins = []
+        self.money = 0
 
         self.score = 0
-        # core.memory("son", core.Sound("./Sound/piouu1.mp3"))
+        core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
     def addJoueur(self):
         self.monVaisseau = Vaisseau()
@@ -28,7 +33,6 @@ class Partie:
     def addMissile(self):
         for i in range(self.munition):
             self.monMissile.append(Missile(1200))
-
 
     def show(self):
         self.monVaisseau.show()
@@ -43,8 +47,6 @@ class Partie:
                 self.MissileAntiRebond = 1
                 self.tirer()
 
-
-
         self.monVaisseau.show()
 
         for i in self.monMissile:
@@ -53,6 +55,7 @@ class Partie:
             i.collision()
 
         self.updateEnnemis()
+        self.updateCoins()
 
         if core.getKeyPressList('ESCAPE'):
             core.memory('etat', Etat.PAUSE)
@@ -65,6 +68,11 @@ class Partie:
 
             for i in self.monMissile:
                 if e.collisionMissile(i):
+                    i.alive = False
+                    self.addCoin(e.position[0],e.position[1])
+                    i.position = (1200, 1200)
+                    e.position = (randint(0, 700), 100)
+                    e.sens = 0
                     self.score = self.score + 1
                     print(str(self.score))
                     if self.score > 10:
@@ -76,12 +84,11 @@ class Partie:
         for i in self.monMissile:
             if not i.isAlive():
                 i.alive = True
-                # core.memory("son").pause()
-                # core.memory("son").rewind()
-                # core.memory("son").start()
+                core.memory("son").pause()
+                core.memory("son").rewind()
+                core.memory("son").start()
                 i.deplacementMissile(self.monVaisseau.getPosX())
                 break
-
 
     def addEnnemis(self):
         if len(self.ennemis) < self.nbEnnemis:
@@ -94,9 +101,26 @@ class Partie:
         self.nbEnnemis = 3
         for i in range(len(self.monMissile)):
             self.monMissile.pop()
-        for i in range (len(self.ennemis)):
+        for i in range(len(self.ennemis)):
             self.ennemis.pop()
         core.memory("maPartie").addMissile()
 
     def get_score(self):
         return self.score
+
+    def addCoin(self, CoordX, CoordY):
+        Chance = randint(1, 5)
+        if Chance == 1:
+            self.Coins.append(Coin(CoordX, CoordY))
+
+    def updateCoins(self):
+        for i in self.Coins:
+            if i.collisionJoueur(self.monVaisseau):
+                self.money += i.gain
+                index = self.Coins.index(i)
+                self.Coins.pop(index)
+            elif i.update() == 1:
+                index = self.Coins.index(i)
+                self.Coins.pop(index)
+
+

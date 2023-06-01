@@ -15,7 +15,7 @@ class Vaisseau:
 
         if not core.memory("TextureVaisseau").ready:
             core.memory("TextureVaisseau").load()
-        core.memory("TextureVaisseau").pos = self.position
+        core.memory("TextureVaisseau").pos = (self.position[0] - 25,self.position[1] - 25)
         core.memory("TextureVaisseau").show()
 
     def deplacement(self):  # Deplacmement du vaisseau suivant les touches pressé
