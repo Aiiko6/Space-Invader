@@ -14,6 +14,7 @@ class PageMenu:
         self.bp = Bouton(300,200)
         self.bp1 = Bouton(300, 300)
         self.bp2 = Bouton(300, 400)
+        self.bp3 = Bouton(300, 500)
         self.mouse = pygame.mouse.get_pos()
         self.massCursor = 2
         self.startMenu = 1
@@ -27,7 +28,9 @@ class PageMenu:
         self.bp1.show()
         core.Draw.text(self.couleur, 'Parametres ', (340, 280))
         self.bp2.show()
-        core.Draw.text(self.couleur, 'Quitter ', (340, 380))
+        core.Draw.text(self.couleur, 'Commandes ', (340, 380))
+        self.bp3.show()
+        core.Draw.text(self.couleur, 'Quitter ', (340, 480))
 
         if (self.startMenu == 0) or (not core.getMouseLeftClick()):
             self.startMenu = 0
@@ -38,6 +41,9 @@ class PageMenu:
                 self.startMenu = 1
                 core.memory('etat', Etat.OPTION)
             if core.getMouseLeftClick() and self.distanceCheck(self.bp2):
+                self.startMenu = 1
+                core.memory('etat', Etat.COM)
+            if core.getMouseLeftClick() and self.distanceCheck(self.bp3):
                 self.startMenu = 1
                 pygame.quit()
                 sys.exit()

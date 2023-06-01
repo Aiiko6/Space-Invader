@@ -2,6 +2,7 @@ import pygame
 
 import core
 from jeu.Etat import Etat
+from jeu.IHM.PageCommande import PageCommande
 from jeu.IHM.PageGameOver import PageGameOver
 from jeu.IHM.PageGraphique import PageGraphique
 from jeu.IHM.PageMenu import PageMenu
@@ -22,6 +23,7 @@ def setup():
     core.memory("PausePage", PauseMenu())
     core.memory("OptionPage", PageOption())
     core.memory("PageGameOver",PageGameOver())
+    core.memory("PageCommande", PageCommande())
     core.memory("GraphiPage", PageGraphique())
     core.memory("SkinPage", PageSkin())
     #Declaration variable Partie
@@ -61,6 +63,9 @@ def run():
 
     if core.memory('etat') == Etat.GAMEOVER:
         core.memory("PageGameOver").update()
+
+    if core.memory('etat') == Etat.COM:
+        core.memory("PageCommande").update()
 
 
 
