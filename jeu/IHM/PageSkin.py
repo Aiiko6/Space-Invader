@@ -17,8 +17,8 @@ class PageSkin:
         self.massCursor = 2
         self.startMenu = 1
         self.selector = 0
-        self.skinURLList = ['./Image/Ship.png', './Image/Vaisseau.png']
-        self.skinTailleList = [(100, 100), (150, 100)]
+        self.skinURLList = ['./Image/Ship.png', './Image/Vaisseau.png','./Image/Vaisseau2.png','./Image/Vaisseau3.png']
+        self.skinTailleList = [(100, 100), (150, 100), (100, 100),(100, 100)]
 
     def update(self):
 
