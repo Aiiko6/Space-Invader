@@ -29,7 +29,7 @@ class Partie:
         self.ActiveMenuAchat = False
 
         self.score = 0
-        core.memory("TextureAchat", core.Texture('./Image/MenuAchat.png', (65, 50), 0, (650, 500)))
+
         core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
     def addJoueur(self):
