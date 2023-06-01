@@ -20,6 +20,7 @@ class Partie:
         self.ennemis = []
 
         self.score = 0
+        core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
 
 
@@ -64,6 +65,9 @@ class Partie:
             e.collisionJoueur(self.monVaisseau)
 
     def tirer(self):
+        core.memory("son").pause()
+        core.memory("son").rewind()
+        core.memory("son").start()
         self.monMissile.deplacementMissile(self.monVaisseau.getPosX())
 
     def addEnnemis(self):
