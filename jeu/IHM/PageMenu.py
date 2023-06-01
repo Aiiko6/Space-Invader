@@ -15,7 +15,7 @@ class PageMenu:
         self.bp1 = Bouton(300, 300)
         self.bp2 = Bouton(300, 400)
         self.bp3 = Bouton(300, 500)
-        self.mouse = pygame.mouse.get_pos()
+        self.mouse = core.getMouseLocation()
         self.massCursor = 2
         self.startMenu = 1
 

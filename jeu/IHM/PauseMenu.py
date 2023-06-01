@@ -11,7 +11,7 @@ class PauseMenu:
         self.couleur = (255,255,255)
         self.bp = Bouton(300,200)
         self.bp1 = Bouton(300, 300)
-        self.mouse = pygame.mouse.get_pos()
+        self.mouse = core.getMouseLocation()
         self.massCursor = 2
         self.startMenu = 1
 

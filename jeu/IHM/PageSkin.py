@@ -22,7 +22,7 @@ class PageSkin:
 
     def update(self):
 
-        self.mouse = pygame.mouse.get_pos()
+        self.mouse = core.getMouseLocation()
 
         self.bp3.show()
         self.Flechedroite.show()

@@ -9,7 +9,7 @@ from jeu.IHM.Bouton import Bouton
 class PageGraphique:
     def __init__(self):  # constructeur
         self.couleur = (255, 255, 255)
-        self.mouse = pygame.mouse.get_pos()
+        self.mouse = core.getMouseLocation()
         self.massCursor = 2
         self.startMenu = 1
         self.Fullscreen = False

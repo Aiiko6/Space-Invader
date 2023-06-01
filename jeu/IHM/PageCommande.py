@@ -15,7 +15,7 @@ class PageCommande:
         self.startMenu = 1
 
     def update(self):
-        self.mouse = pygame.mouse.get_pos()
+        self.mouse = core.getMouseLocation()
         core.Draw.text(self.couleur, 'Commande:', (300, 10))
         core.Draw.text(self.couleur, 'Gauche: q ', (340, 180))
         core.Draw.text(self.couleur, 'Droite: d ', (340, 280))
