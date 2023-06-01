@@ -395,4 +395,7 @@ class Texture:
 
                 core.screen.blit(rotated_image, new_rect)
 
+    def setScalesize(self,valx, valy):
+        self.scaleSize = (valx,valy)
+
 

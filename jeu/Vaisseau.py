@@ -19,9 +19,9 @@ class Vaisseau:
         core.memory("TextureVaisseau").show()
 
     def deplacement(self):  # Deplacmement du vaisseau suivant les touches pressé
-        if core.getKeyPressList("d") and self.position[0] < 750:
+        if core.getKeyPressList("d") and self.position[0] < 775:
             self.position = (self.position[0] + self.vitesse, self.position[1])
-        if core.getKeyPressList("q") and self.position[0] > 0:
+        if core.getKeyPressList("q") and self.position[0] > 25:
             self.position = (self.position[0] + -self.vitesse, self.position[1])
 
     def getPosX(self):

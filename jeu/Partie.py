@@ -4,6 +4,7 @@ import core
 from jeu.Coin import Coin
 from jeu.Ennemi import Ennemi
 from jeu.Etat import Etat
+from jeu.Fire import Fire
 from jeu.IHM.MenuAchat import MenuAchat
 from jeu.Missile import Missile
 from jeu.Vaisseau import Vaisseau
@@ -24,6 +25,7 @@ class Partie:
         self.AntiRebond = 1
         self.MissileAntiRebond = 1
         self.Coins = []
+        self.Fires = []
         self.money = 0
         self.MenuAchat = MenuAchat()
         self.ActiveMenuAchat = False
@@ -81,6 +83,7 @@ class Partie:
 
         self.updateEnnemis()
         self.updateCoins()
+        self.updateFire()
 
         if core.getKeyPressList('ESCAPE'):
             core.memory('etat', Etat.PAUSE)
@@ -95,6 +98,7 @@ class Partie:
                 if e.collisionMissile(i):
                     i.alive = False
                     self.addCoin(e.position[0],e.position[1])
+                    self.addFire(e.position[0],e.position[1])
                     i.position = (1200, 1200)
                     e.position = (randint(0, 700), 100)
                     e.sens = 0
@@ -147,4 +151,12 @@ class Partie:
                 index = self.Coins.index(i)
                 self.Coins.pop(index)
 
+    def addFire(self, CoordX, CoordY):
+        self.Fires.append(Fire(CoordX, CoordY))
 
+    def updateFire(self):
+        for i in self.Fires:
+            i.update()
+            if i.getTimeToLive() == 15:
+                index = self.Fires.index(i)
+                self.Fires.pop(index)
