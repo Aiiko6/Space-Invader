@@ -34,7 +34,7 @@ class Partie:
         self.monVaisseau.show()
 
     def update(self):
-        core.Draw.text(self.couleur, 'score: ' + str(self.score), (10, 10))
+        core.Draw.text(self.couleur, 'Score: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
 
         if (self.MissileAntiRebond == 0) or (not core.getKeyPressList('SPACE')):
@@ -88,12 +88,13 @@ class Partie:
             self.ennemis.append(Ennemi())
 
     def restart(self):
-        for e in range(len(self.ennemis)):
-            self.ennemis.pop()
         self.score = 0
         self.nbEnnemis = 3
-
-        self.monMissile = Missile(1200)
+        for i in range(len(self.monMissile)):
+            self.monMissile.pop()
+        for i in range (len(self.ennemis)):
+            self.ennemis.pop()
+        core.memory("maPartie").addMissile()
 
     def get_score(self):
         return self.score
