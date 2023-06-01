@@ -121,7 +121,6 @@ class Partie:
 
     def restart(self):
         core.memory("maPartie").addEnnemis()
-        core.memory('etat', Etat.MENU)
         self.score = 0
         self.nbEnnemis = 3
         for i in range(len(self.monMissile)):

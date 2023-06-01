@@ -69,6 +69,7 @@ def run():
 
     if core.memory('etat') == Etat.JEU:
         #print('jeu')
+
         core.memory("maPartie").addEnnemis()
         core.memory("maPartie").show()
         core.memory("maPartie").update()
