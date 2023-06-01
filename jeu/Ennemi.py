@@ -36,10 +36,6 @@ class Ennemi:
         pos2 = Vector2(missile.position)
         distance = pos1 - pos2
         if self.mass + missile.mass > distance.length():
-            missile.alive = False
-            missile.position = (1200,1200)
-            self.position = (random.randint(0, 700), 100)
-
             return True
 
     def edge(self):
