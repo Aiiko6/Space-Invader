@@ -11,11 +11,14 @@ class PageSkin:
         self.couleur = (255, 255, 255)
 
         self.bp3 = Bouton(300, 500)
-        self.Flechedroite = Bouton(150, 200, True,"./Image/Fleche_droite.png")
-        self.FlecheGauche = Bouton(600, 200, True, "./Image/Fleche_gauche.png")
+        self.Flechedroite = Bouton(141, 275, True, "./Image/Fleche_droite.png")
+        self.FlecheGauche = Bouton(657, 275, True, "./Image/Fleche_gauche.png")
         self.mouse = pygame.mouse.get_pos()
         self.massCursor = 2
         self.startMenu = 1
+        self.selector = 0
+        self.skinURLList = ['./Image/Ship.png', './Image/Vaisseau.png']
+        self.skinTailleList = [(100, 100), (150, 100)]
 
     def update(self):
 
@@ -24,14 +27,34 @@ class PageSkin:
         self.bp3.show()
         self.Flechedroite.show()
         self.FlecheGauche.show()
+
+        self.skinURLChoix = core.Texture(self.skinURLList[self.selector - 1],
+                                         (400 - (self.skinTailleList[self.selector][0]/2), 300 - (self.skinTailleList[self.selector][1]/2)), 0,
+                                         self.skinTailleList[self.selector])
+
+        core.memory("TextureVaisseau", core.Texture(self.skinURLList[self.selector - 1], (0,0), 0, (self.skinTailleList[self.selector][0] - 50,self.skinTailleList[self.selector][1] - 50)))
+
+        if not self.skinURLChoix.ready:
+            self.skinURLChoix.load()
+        self.skinURLChoix.show()
+
         core.Draw.text(self.couleur, 'Retour ', (340, 480))
 
         if (self.startMenu == 0) or (not core.getMouseLeftClick()):
             self.startMenu = 0
-
             if core.getMouseLeftClick() and self.distanceCheck(self.bp3):
                 self.startMenu = 1
-                core.memory('etat', Etat.MENU)
+                core.memory('etat', Etat.OPTION)
+            if core.getMouseLeftClick() and self.distanceCheck(self.Flechedroite):
+                self.startMenu = 1
+                self.selector = self.selector + 1
+                if self.selector > (len(self.skinURLList) - 1):
+                    self.selector = 0
+            if core.getMouseLeftClick() and self.distanceCheck(self.FlecheGauche):
+                self.startMenu = 1
+                self.selector = self.selector - 1
+                if self.selector < 0:
+                    self.selector = (len(self.skinURLList) - 1)
 
     def distanceCheck(self, bouton):
         pos1 = Vector2(self.mouse)
