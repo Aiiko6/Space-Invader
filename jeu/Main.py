@@ -12,6 +12,7 @@ from jeu.Partie import Partie
 
 couleur = (0,0,0)
 background = pygame.image.load("./Image/Fond_ecran800.png")
+core.memory("TextureVaisseau", core.Texture('./Image/Vaisseau.png', (0,0), 0, (50, 50)))
 
 def setup():
 
@@ -34,7 +35,7 @@ def setup():
 def run():
     global background
     core.cleanScreen()
-    
+
     core.screen.blit(background.convert(),(0,0))
 
     if core.memory('etat') == Etat.MENU:
