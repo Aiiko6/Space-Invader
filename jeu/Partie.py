@@ -12,25 +12,23 @@ class Partie:
 
         self.couleur = (255, 255, 255)
         self.taille = Vector2(800, 600)
-
+        self.munition = 3
         self.monVaisseau = Vaisseau
-        self.monMissile = Missile
-
+        self.monMissile = []
         self.nbEnnemis = 3
         self.ennemis = []
+        self.MissileAntiRebond = 1
 
         self.score = 0
-        core.memory("son", core.Sound("./Sound/piouu1.mp3"))
-
-
-
-
+        # core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
     def addJoueur(self):
         self.monVaisseau = Vaisseau()
 
     def addMissile(self):
-        self.monMissile = Missile(1200)
+        for i in range(self.munition):
+            self.monMissile.append(Missile(1200))
+
 
     def show(self):
         self.monVaisseau.show()
@@ -38,15 +36,22 @@ class Partie:
     def update(self):
         core.Draw.text(self.couleur, 'score: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
-        if core.getKeyPressList('SPACE'):
-            self.tirer()
+
+        if (self.MissileAntiRebond == 0) or (not core.getKeyPressList('SPACE')):
+            self.MissileAntiRebond = 0
+            if core.getKeyPressList('SPACE'):
+                self.MissileAntiRebond = 1
+                self.tirer()
+
 
 
         self.monVaisseau.show()
-        self.monMissile.show()
 
-        self.monMissile.trajectoire()
-        self.monMissile.collision()
+        for i in self.monMissile:
+            i.show()
+            i.trajectoire()
+            i.collision()
+
         self.updateEnnemis()
 
         if core.getKeyPressList('ESCAPE'):
@@ -57,18 +62,26 @@ class Partie:
             e.edge()
             e.deplacementEnnemi()
             e.show()
-            if e.collisionMissile(self.monMissile):
-                self.score = self.score + 1
-                print(str(self.score))
-                if (self.score > 10):
-                    self.nbEnnemis = self.score / 5  + 3
+
+            for i in self.monMissile:
+                if e.collisionMissile(i):
+                    self.score = self.score + 1
+                    print(str(self.score))
+                    if self.score > 10:
+                        self.nbEnnemis = self.score / 5 + 3
             e.collisionJoueur(self.monVaisseau)
 
     def tirer(self):
-        core.memory("son").pause()
-        core.memory("son").rewind()
-        core.memory("son").start()
-        self.monMissile.deplacementMissile(self.monVaisseau.getPosX())
+
+        for i in self.monMissile:
+            if not i.isAlive():
+                i.alive = True
+                # core.memory("son").pause()
+                # core.memory("son").rewind()
+                # core.memory("son").start()
+                i.deplacementMissile(self.monVaisseau.getPosX())
+                break
+
 
     def addEnnemis(self):
         if len(self.ennemis) < self.nbEnnemis:

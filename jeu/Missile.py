@@ -6,8 +6,7 @@ class Missile:
         self.vitesse = 10
         self.position =(coordX,550)
         self.mass = 5
-
-        self.lance = False
+        self.alive = False
 
         core.memory("textureMissile", core.Texture("./Image/Missile.png", self.position, 0, (8, 15)))
 
@@ -26,5 +25,9 @@ class Missile:
 
     def collision(self):
         #Si dépassement de l'écran
-        if (self.position[1] > 600):
+        if self.position[1] < 0:
+            self.alive = False
             self.position = (1200,1200)
+
+    def isAlive(self):
+        return self.alive
