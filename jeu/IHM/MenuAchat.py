@@ -16,5 +16,4 @@ class MenuAchat:
     def affichageMenu(self):
         if not core.memory("TextureAchat").ready:
             core.memory("TextureAchat").load()
-        core.memory("TextureAchat").pos = (self.position[0] - 25, self.position[1] - 25)
         core.memory("TextureAchat").show()

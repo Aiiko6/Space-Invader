@@ -21,13 +21,15 @@ class Partie:
         self.monMissile = []
         self.nbEnnemis = 3
         self.ennemis = []
+        self.AntiRebond = 1
         self.MissileAntiRebond = 1
         self.Coins = []
         self.money = 0
         self.MenuAchat = MenuAchat()
+        self.ActiveMenuAchat = False
 
         self.score = 0
-        core.memory("TextureAchat", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
+        core.memory("TextureAchat", core.Texture('./Image/MenuAchat.png', (65, 50), 0, (650, 500)))
         core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
     def addJoueur(self):
@@ -41,10 +43,24 @@ class Partie:
         self.monVaisseau.show()
 
     def update(self):
-        self.update()
+
+        if (self.AntiRebond == 0) or (not core.getKeyPressList('e')):
+            self.AntiRebond = 0
+            if core.getKeyPressList('e'):
+                self.AntiRebond = 1
+
+                if self.ActiveMenuAchat:
+                    self.ActiveMenuAchat = False
+                else:
+                    self.ActiveMenuAchat = True
+
+        if not self.ActiveMenuAchat:
+            self.updateJeu()
+        else:
+            self.updateAchat()
 
     def updateAchat(self):
-        self.MenuAchat.show()
+        self.MenuAchat.affichageMenu()
 
     def updateJeu(self):
         core.Draw.text(self.couleur, 'Score: ' + str(self.score), (10, 10))
