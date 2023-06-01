@@ -9,6 +9,7 @@ class Bouton:
         self.position = (coordX, coordY)
         self.mass = 20
         self.Skin = core.Texture(URL, self.position, 0, (50, 50))
+        self.startMenu = 1
 
     def show(self):
         if self.visible:
@@ -19,5 +20,3 @@ class Bouton:
                     self.Skin.load()
                 self.Skin.pos = self.position
                 self.Skin.show()
-
-
