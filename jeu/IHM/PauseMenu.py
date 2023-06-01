@@ -30,6 +30,7 @@ class PauseMenu:
                 core.memory('etat', Etat.JEU)
             if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
                 self.startMenu = 1
+                core.memory("maPartie").restart()
                 core.memory('etat', Etat.MENU)
 
     def distanceCheck(self, bouton):
