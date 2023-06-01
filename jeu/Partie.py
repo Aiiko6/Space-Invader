@@ -41,7 +41,7 @@ class Partie:
         self.monVaisseau.show()
 
     def update(self):
-        self.update()
+        self.updateJeu()
 
     def updateAchat(self):
         self.MenuAchat.show()
@@ -105,7 +105,6 @@ class Partie:
 
     def restart(self):
         core.memory("maPartie").addEnnemis()
-        core.memory('etat', Etat.MENU)
         self.score = 0
         self.nbEnnemis = 3
         for i in range(len(self.monMissile)):

@@ -4,6 +4,7 @@ from pygame import Vector2
 import core
 from jeu.Etat import Etat
 from jeu.IHM.Bouton import Bouton
+from jeu.IHM.Bouton1 import Bouton1
 
 
 class PageGraphique:
@@ -13,7 +14,7 @@ class PageGraphique:
         self.massCursor = 2
         self.startMenu = 1
         self.Fullscreen = False
-        self.bp = Bouton(300, 500)
+        self.bp = Bouton1(300, 500,Etat.OPTION)
         self.bpFullNo = Bouton(520, 210, False)
         self.bpFullYes = Bouton(520, 210, False)
 
@@ -33,7 +34,10 @@ class PageGraphique:
             core.Draw.text(self.couleur, 'Yes', (500, 200))
 
         self.bp.show()
+        self.bp.update()
         core.Draw.text(self.couleur, 'Retour ', (340, 480))
+
+
 
         if (self.startMenu == 0) or (not core.getMouseLeftClick()):
             self.startMenu = 0
@@ -45,10 +49,6 @@ class PageGraphique:
             if core.getMouseLeftClick() and self.distanceCheck(self.bpFullYes) and not self.Fullscreen:
                 self.startMenu = 1
                 self.Fullscreen = True
-
-            if core.getMouseLeftClick() and self.distanceCheck(self.bp):
-                self.startMenu = 1
-                core.memory('etat', Etat.OPTION)
 
     def distanceCheck(self, bouton):
         pos1 = Vector2(self.mouse)

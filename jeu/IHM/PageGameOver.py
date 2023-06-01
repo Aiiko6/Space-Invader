@@ -6,49 +6,26 @@ from pygame import Vector2
 import core
 from jeu.Etat import Etat
 from jeu.IHM.Bouton import Bouton
+from jeu.IHM.Bouton1 import Bouton1
 
 
 class PageGameOver:
     def __init__(self):  # constructeur
         self.couleur = (255,255,255)
-        self.bp = Bouton(300,200)
-        self.bp1 = Bouton(300, 400)
-        self.mouse = pygame.mouse.get_pos()
+        self.bp = Bouton1(300,200,Etat.MENU)
+        self.bp1 = Bouton1(300, 400,Etat.DESTROY)
         self.massCursor = 2
 
 
-
-
-
     def update(self):
-
-
-        core.Draw.text(self.couleur, 'Game OVER ', (320, 10))
-        self.mouse = pygame.mouse.get_pos()
-
-
+        core.memory("maPartie").restart()
         self.bp.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp):
-            core.memory("maPartie").restart()
-
+        self.bp.update()
         core.Draw.text(self.couleur, 'Rejouer ', (340, 180))
 
         self.bp1.show()
-        if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
-            pygame.quit()
-            sys.exit()
+        self.bp1.update()
 
         self.score = core.memory("maPartie").get_score()
         core.Draw.text(self.couleur, 'Score: ' + str(self.score), (340, 280))
-
         core.Draw.text(self.couleur, 'Exit ', (340, 380))
-
-
-    def distanceCheck(self, bouton):
-        pos1 = Vector2(self.mouse)
-        pos2 = Vector2(bouton.position)
-        distance = pos1 - pos2
-        if self.massCursor + bouton.mass > distance.length():
-            return True
-        else:
-            return False
