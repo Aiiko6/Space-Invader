@@ -9,7 +9,7 @@ class Vaisseau:
         self.vitesse = 10
         self.position = (100, 535)
         self.mass = 20
-        core.memory("TextureVaisseau", core.Texture("./Image/Vaisseau.png", self.position, 0, (50, 50)))
+
 
     def show(self):
 
