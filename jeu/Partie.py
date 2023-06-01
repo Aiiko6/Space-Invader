@@ -4,6 +4,7 @@ import core
 from jeu.Coin import Coin
 from jeu.Ennemi import Ennemi
 from jeu.Etat import Etat
+from jeu.IHM.MenuAchat import MenuAchat
 from jeu.Missile import Missile
 from jeu.Vaisseau import Vaisseau
 
@@ -23,8 +24,10 @@ class Partie:
         self.MissileAntiRebond = 1
         self.Coins = []
         self.money = 0
+        self.MenuAchat = MenuAchat()
 
         self.score = 0
+        core.memory("TextureAchat", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
         core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
     def addJoueur(self):
@@ -38,6 +41,12 @@ class Partie:
         self.monVaisseau.show()
 
     def update(self):
+        self.update()
+
+    def updateAchat(self):
+        self.MenuAchat.show()
+
+    def updateJeu(self):
         core.Draw.text(self.couleur, 'Score: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
 
