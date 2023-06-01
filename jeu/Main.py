@@ -1,3 +1,5 @@
+import pygame
+
 import core
 from jeu.Etat import Etat
 from jeu.IHM.PageGameOver import PageGameOver
@@ -9,8 +11,10 @@ from jeu.IHM.PauseMenu import PauseMenu
 from jeu.Partie import Partie
 
 couleur = (0,0,0)
+background = pygame.image.load("./Image/Fond_ecran800.png")
 
 def setup():
+
     core.fps = 60
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu",PageMenu())
@@ -19,17 +23,19 @@ def setup():
     core.memory("PageGameOver",PageGameOver())
     core.memory("GraphiPage", PageGraphique())
     core.memory("SkinPage", PageSkin())
-
     #Declaration variable Partie
     core.memory("maPartie", Partie())
     core.WINDOW_SIZE = [800, 600]
 
-
     core.memory("maPartie").addJoueur()
     core.memory("maPartie").addMissile()
 
+
 def run():
+    global background
     core.cleanScreen()
+    
+    core.screen.blit(background.convert(),(0,0))
 
     if core.memory('etat') == Etat.MENU:
         core.memory("PageMenu").update()
