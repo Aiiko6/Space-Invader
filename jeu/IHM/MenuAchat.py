@@ -1,4 +1,5 @@
 import core
+from jeu.IHM.BarreAmelioration import BarreAmelioration
 
 
 class MenuAchat:
@@ -10,6 +11,10 @@ class MenuAchat:
         core.memory("TextureAchat", core.Texture('./Image/MenuAchat.png', (65, 50), 0, (650, 500)))
         self.position = core.memory("TextureAchat").pos
         self.money = 0
+        self.barreameMuni = BarreAmelioration(100,450)
+        self.vitesseVaisseau = BarreAmelioration(100,450)
+        self.nbTir = BarreAmelioration(100,450)
+        self.vitesseMunition = BarreAmelioration(100,450)
 
     def affichageMenu(self):
 

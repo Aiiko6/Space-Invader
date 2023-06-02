@@ -32,7 +32,12 @@ def setup():
     core.WINDOW_SIZE = [800, 600]
     global background
     background = core.Texture("./Image/Fond_ecran800.png", (0, 0), 0, core.WINDOW_SIZE)
+
     core.memory("TextureVaisseau", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
+    core.memory("Barredame4", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
+    core.memory("Barredame3", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
+    core.memory("Barredame2", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
+    core.memory("Barredame1", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
 
     core.memory("maPartie").addJoueur()
     core.memory("maPartie").addMissile()
@@ -80,7 +85,7 @@ def run():
     if core.memory('etat') == Etat.COM:
         core.memory("PageCommande").update()
 
-    if core.memory('etat')== Etat.DESTROY:
+    if core.memory('etat') == Etat.DESTROY:
         pygame.quit()
         sys.exit()
 
