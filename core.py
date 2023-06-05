@@ -359,7 +359,6 @@ class Sound:
 
     def playin(self):
         pygame.mixer.music.play()
-        print("playin")
 
 class Texture:
     def __init__(self, url, pos=pygame.Vector2(), offset=0, scaleSize=(100, 100), display=True,alpha=255):

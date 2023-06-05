@@ -5,6 +5,7 @@ import pygame
 import core
 from jeu.Etat import Etat
 from jeu.IHM.FrontMontant import frontMontant
+from jeu.IHM.PageChargement import PageChargement
 from jeu.IHM.PageCommande import PageCommande
 from jeu.IHM.PageGameOver import PageGameOver
 from jeu.IHM.PageGraphique import PageGraphique
@@ -27,6 +28,7 @@ def setup():
     core.memory("PageCommande", PageCommande())
     core.memory("GraphiPage", PageGraphique())
     core.memory("SkinPage", PageSkin())
+    core.memory("PageChargement", PageChargement())
     #Declaration variable Partie
     core.memory("maPartie", Partie())
     core.WINDOW_SIZE = [800, 600]
@@ -88,6 +90,9 @@ def run():
     if core.memory('etat') == Etat.DESTROY:
         pygame.quit()
         sys.exit()
+
+    if core.memory('etat') == Etat.CHARGEMENT:
+        core.memory("PageChargement").update()
 
 
 

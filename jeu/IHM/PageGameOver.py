@@ -15,6 +15,8 @@ class PageGameOver:
         self.bp = Bouton1(300,200,Etat.MENU)
         self.bp1 = Bouton1(300, 400,Etat.DESTROY)
         self.massCursor = 2
+        self.bRunOnce = 0
+        self.score = 0
 
 
     def update(self):
@@ -26,6 +28,9 @@ class PageGameOver:
         self.bp1.show()
         self.bp1.update()
 
-        self.score = core.memory("maPartie").get_score()
         core.Draw.text(self.couleur, 'Score: ' + str(self.score), (340, 280))
         core.Draw.text(self.couleur, 'Exit ', (340, 380))
+
+    def setScore(self):
+        self.score = core.memory("maPartie").get_score()
+

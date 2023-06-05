@@ -52,3 +52,4 @@ class Ennemi:
         distance = pos1 - pos2
         if self.mass + Joueur.mass > distance.length():
             core.memory('etat', Etat.GAMEOVER)
+            core.memory('PageGameOver').setScore()

@@ -12,3 +12,4 @@ class Etat(Enum):
     GRAPHI = 7
     COM = 8
     DESTROY = 9
+    CHARGEMENT = 10

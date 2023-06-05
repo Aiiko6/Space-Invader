@@ -13,7 +13,7 @@ class PageMenu:
     def __init__(self):  # constructeur
         self.couleur = (255,255,255)
 
-        self.bp = Bouton1(300, 200, Etat.JEU)
+        self.bp = Bouton1(300, 200, Etat.CHARGEMENT)
         self.bp1 = Bouton1(300, 300, Etat.OPTION)
         self.bp2 = Bouton1(300, 400,Etat.COM)
         self.bp3 = Bouton1(300, 500,Etat.DESTROY)
