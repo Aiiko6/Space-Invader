@@ -13,7 +13,7 @@ class Fire:
         self.timeToLive = 0
         core.memory("textureFire", core.Texture("./Image/Fire.gif", self.position, 0, (50, 50)))
 
-        self.son = core.Sound("./Sound/tnt.mp3")
+        self.son = core.Sound("./Sound/tnt.mp3",2)
         self.bRunOnce = False
 
     def update(self):

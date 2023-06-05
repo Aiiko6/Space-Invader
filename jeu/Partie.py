@@ -32,7 +32,7 @@ class Partie:
 
         self.score = 0
 
-        core.memory("son", core.Sound("./Sound/piouu1.mp3"))
+        core.memory("son", core.Sound("./Sound/piouu1.mp3",1))
 
 
     def addJoueur(self):
