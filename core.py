@@ -322,11 +322,12 @@ class Draw:
 
 class Sound:
 
-    def __init__(self,url):
+    def __init__(self,url,id):
         self.ready = False
         self.url = url
         self.play=False
         self.thread=None
+        self.id = id
         if self.url!="":
             pygame.mixer.pre_init(44100, -16, 2, 2048)
             pygame.mixer.init()

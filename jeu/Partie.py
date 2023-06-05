@@ -34,6 +34,7 @@ class Partie:
 
         core.memory("son", core.Sound("./Sound/piouu1.mp3"))
 
+
     def addJoueur(self):
         self.monVaisseau = Vaisseau()
 
