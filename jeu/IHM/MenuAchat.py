@@ -64,7 +64,7 @@ class MenuAchat:
                     self.barreameMuni.stat += 1
                     core.memory("maPartie").money -= self.MuniP
                     self.MuniP *= 2
-                    core.memory("maPartie").munition += 1
+                    core.memory("maPartie").munitionMax += 1
 
         if self.VVB.update1():
             if self.vitesseVaisseau.stat < 4:
@@ -80,6 +80,7 @@ class MenuAchat:
                     self.nbTir.stat += 1
                     core.memory("maPartie").money -= self.NBTP
                     self.NBTP *= 2
+                    core.memory("maPartie").NbTir += 1
 
         if self.VMB.update1():
             if self.vitesseMunition.stat < 4:
@@ -87,7 +88,7 @@ class MenuAchat:
                     self.vitesseMunition.stat += 1
                     core.memory("maPartie").money -= self.VMP
                     self.VMP *= 2
-                    core.memory("maPartie").Vmissile *= 1.4
+                    core.memory("maPartie").Vmissile *= 1.1
 
     def speedincreeseJoueur(self, Joueur):
         Joueur.speed *= 1.3

@@ -17,7 +17,9 @@ class Partie:
 
         self.couleur = (255, 255, 255)
         self.taille = Vector2(800, 600)
-        self.munition = 3
+        self.munitionMax = 3
+        self.NbTir = 1
+        self.munition = self.munitionMax * self.NbTir
         self.monVaisseau = Vaisseau
         self.monMissile = []
         self.nbEnnemis = 3
@@ -40,14 +42,15 @@ class Partie:
         self.monVaisseau = Vaisseau()
 
     def addMissile(self):
-        for i in range(self.munition):
+        for i in range(self.munition - len(self.monMissile)):
             self.monMissile.append(Missile(1200, self.Vmissile))
 
     def show(self):
         self.monVaisseau.show()
 
     def update(self):
-
+        self.munition = self.munitionMax * self.NbTir
+        self.addMissile()
         if (self.AntiRebond == 0) or (not core.getKeyPressList('e')):
             self.AntiRebond = 0
             if core.getKeyPressList('e'):
@@ -81,7 +84,9 @@ class Partie:
         for i in self.monMissile:
             i.show()
             i.trajectoire()
-            i.collision()
+            if i.collision():
+                index = self.monMissile.index(i)
+                self.monMissile.pop(index)
 
         self.updateEnnemis()
         self.updateCoins()
@@ -111,15 +116,39 @@ class Partie:
             e.collisionJoueur(self.monVaisseau)
 
     def tirer(self):
+        MissileAvaible = []
+        Compteur = 0
+
+        print(self.munition)
 
         for i in self.monMissile:
             if not i.isAlive():
+                Compteur += 1
                 i.alive = True
-                core.memory("son").pause()
-                core.memory("son").rewind()
-                core.memory("son").start()
-                i.deplacementMissile(self.monVaisseau.getPosX())
+                MissileAvaible.append(i)
+            print(Compteur)
+            if Compteur >= self.NbTir:
                 break
+
+        if Compteur > 0:
+            core.memory("son").pause()
+            core.memory("son").rewind()
+            core.memory("son").start()
+            if Compteur == 1:
+                MissileAvaible[0].deplacementMissile(self.monVaisseau.getPosX())
+            elif Compteur == 2:
+                MissileAvaible[0].deplacementMissile(self.monVaisseau.getPosX() - 10)
+                MissileAvaible[1].deplacementMissile(self.monVaisseau.getPosX() + 10)
+            elif Compteur == 3:
+                MissileAvaible[0].deplacementMissile(self.monVaisseau.getPosX()-20)
+                MissileAvaible[1].deplacementMissile(self.monVaisseau.getPosX())
+                MissileAvaible[2].deplacementMissile(self.monVaisseau.getPosX()+20)
+            elif Compteur == 4:
+                MissileAvaible[0].deplacementMissile(self.monVaisseau.getPosX() + 40)
+                MissileAvaible[1].deplacementMissile(self.monVaisseau.getPosX() + 20)
+                MissileAvaible[2].deplacementMissile(self.monVaisseau.getPosX() - 20)
+                MissileAvaible[3].deplacementMissile(self.monVaisseau.getPosX() - 40)
+
 
     def addEnnemis(self):
         if len(self.ennemis) < self.nbEnnemis:

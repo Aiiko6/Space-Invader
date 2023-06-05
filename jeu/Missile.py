@@ -26,8 +26,7 @@ class Missile:
     def collision(self):
         # Si dépassement de l'écran
         if self.position[1] < 0:
-            self.alive = False
-            self.position = (1200, 1200)
+            return True
 
     def isAlive(self):
         return self.alive
