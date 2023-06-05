@@ -2,8 +2,8 @@ import core
 
 
 class Missile:
-    def __init__(self, coordX):  # constructeur
-        self.vitesse = 10
+    def __init__(self, coordX, Vitesse):  # constructeur
+        self.vitesse = Vitesse
         self.position = (coordX, 550)
         self.mass = 5
         self.alive = False

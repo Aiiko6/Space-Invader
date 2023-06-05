@@ -4,8 +4,8 @@ import core
 
 
 class BarreAmelioration:
-    def __int__(self,coordX,coordY):
-        self.position = Vector2(coordX,coordY)
+    def __init__(self, coordX, coordY):
+        self.position = Vector2(coordX, coordY)
         self.stat = 1
         self.textureURL = "Barredame"
 

@@ -26,21 +26,22 @@ class Partie:
         self.MissileAntiRebond = 1
         self.Coins = []
         self.Fires = []
-        self.money = 0
+        self.money = 50
         self.MenuAchat = MenuAchat()
         self.ActiveMenuAchat = False
 
+        self.Vmissile = 10
+
         self.score = 0
 
-        core.memory("son", core.Sound("./Sound/piouu1.mp3",1))
-
+        core.memory("son", core.Sound("./Sound/piouu1.mp3", 1))
 
     def addJoueur(self):
         self.monVaisseau = Vaisseau()
 
     def addMissile(self):
         for i in range(self.munition):
-            self.monMissile.append(Missile(1200))
+            self.monMissile.append(Missile(1200, self.Vmissile))
 
     def show(self):
         self.monVaisseau.show()
@@ -63,7 +64,7 @@ class Partie:
             self.updateAchat()
 
     def updateAchat(self):
-        self.MenuAchat.affichageMenu()
+        self.MenuAchat.affichageMenu(self.monVaisseau)
 
     def updateJeu(self):
         core.Draw.text(self.couleur, 'Score: ' + str(self.score), (10, 10))
@@ -98,8 +99,8 @@ class Partie:
             for i in self.monMissile:
                 if e.collisionMissile(i):
                     i.alive = False
-                    self.addCoin(e.position[0],e.position[1])
-                    self.addFire(e.position[0],e.position[1])
+                    self.addCoin(e.position[0], e.position[1])
+                    self.addFire(e.position[0], e.position[1])
                     i.position = (1200, 1200)
                     e.position = (randint(0, 700), 100)
                     e.sens = 0

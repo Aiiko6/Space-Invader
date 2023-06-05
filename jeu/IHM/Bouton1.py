@@ -6,7 +6,7 @@ import core
 
 
 class Bouton1:
-    def __init__(self, coordX, coordY ,var , Visible=True, URL=""):  # constructeur
+    def __init__(self, coordX, coordY, var, Visible=True, URL=""):  # constructeur
         self.Adresse = URL
         self.visible = Visible
         self.couleur = (255, 255, 255)
@@ -28,10 +28,14 @@ class Bouton1:
                 self.Skin.show()
 
     def update(self):
-            if self.distanceCheck() and core.memory('gestionFront').update():
-                print(self.var)
-                print(self.var.value)
-                core.memory('etat', self.var)
+        if self.distanceCheck() and core.memory('gestionFront').update():
+            print(self.var)
+            print(self.var.value)
+            core.memory('etat', self.var)
+
+    def update1(self):
+        if self.distanceCheck() and core.memory('gestionFront').update():
+            return True
 
     def distanceCheck(self):
         self.mouse = pygame.mouse.get_pos()

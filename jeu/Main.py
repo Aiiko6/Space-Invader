@@ -36,10 +36,10 @@ def setup():
     background = core.Texture("./Image/Fond_ecran800.png", (0, 0), 0, core.WINDOW_SIZE)
 
     core.memory("TextureVaisseau", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
-    core.memory("Barredame4", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
-    core.memory("Barredame3", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
-    core.memory("Barredame2", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
-    core.memory("Barredame1", core.Texture('./Image/Vaisseau.png', (0, 0), 0, (50, 50)))
+    core.memory("Barredame4", core.Texture('./Image/Barredame4.png', (0, 0), 0, (100, 19)))
+    core.memory("Barredame3", core.Texture('./Image/Barredame3.png', (0, 0), 0, (100, 19)))
+    core.memory("Barredame2", core.Texture('./Image/Barredame2.png', (0, 0), 0, (100, 19)))
+    core.memory("Barredame1", core.Texture('./Image/Barredame1.png', (0, 0), 0, (100, 19)))
 
     core.memory("maPartie").addJoueur()
     core.memory("maPartie").addMissile()
