@@ -311,9 +311,12 @@ class Draw:
         else:
             pygame.draw.polygon(core.screen, color, points, width)
 
-    def text(color, texte, position, taille=30, font='Arial'):
+    def text(color, texte, position, taille=30, font='Arial',Sys=True):
         pygame.font.init()
-        myfont = pygame.font.SysFont(font, taille)
+        if Sys:
+            myfont = pygame.font.SysFont(font, taille)
+        else:
+            myfont = pygame.font.Font()
         textsurface = myfont.render(texte, False, color)
         if len(color)>3:
             textsurface.set_alpha(color[3])

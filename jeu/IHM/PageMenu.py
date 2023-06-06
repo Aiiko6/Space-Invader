@@ -13,7 +13,7 @@ class PageMenu:
     def __init__(self):  # constructeur
         self.couleur = (255,255,255)
 
-        self.bp = Bouton1(300, 200, Etat.CHARGEMENT)
+        self.bp = Bouton1(300, 200, Etat.CHARGEMENT,True,"./Image/Play.png",(225,75))
         self.bp1 = Bouton1(300, 300, Etat.OPTION)
         self.bp2 = Bouton1(300, 400,Etat.COM)
         self.bp3 = Bouton1(300, 500,Etat.DESTROY)
@@ -21,13 +21,13 @@ class PageMenu:
 
     def update(self):
         self.mouse = pygame.mouse.get_pos()
-        core.Draw.text(self.couleur, 'Space invader: ', (300, 10))
+
+        if not core.memory("TexTitre").ready:
+            core.memory("TexTitre").load()
+        core.memory("TexTitre").show()
+
         self.bp.show()
-        self.bp.update()
-
-
-        core.Draw.text(self.couleur, 'Jouer ', (340, 180))
-
+        self.bp.updateRect()
         self.bp1.show()
         self.bp1.update()
         core.Draw.text(self.couleur, 'Parametres ', (340, 280))

@@ -134,7 +134,7 @@ class Partie:
                             i.position = (1200, 1200)
 
                         print(str(self.score))
-                        e.collisionJoueur(self.monVaisseau)
+                e.collisionJoueur(self.monVaisseau)
 
         else:
 

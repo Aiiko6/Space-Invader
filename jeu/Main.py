@@ -19,7 +19,7 @@ from jeu.Partie import Partie
 
 def setup():
 
-    core.fps = 60
+    core.fps = 600
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu",PageMenu())
     core.memory("PausePage", PauseMenu())
@@ -45,6 +45,9 @@ def setup():
     core.memory("textureEnemy2", core.Texture("./Image/Enemy2.png", (0, 0), 0, (50, 50)))
     core.memory("textureEnemy3", core.Texture("./Image/Enemy3.png", (0, 0), 0, (50, 50)))
     core.memory("textureEnemy4", core.Texture("./Image/Enemy4.png", (0, 0), 0, (50, 50)))
+
+    core.memory("TexTitre", core.Texture("./Image/Titre.png", (150, 50), 0, (500, 100)))
+
 
 
     core.memory("maPartie").addJoueur()
