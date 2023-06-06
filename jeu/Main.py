@@ -45,7 +45,7 @@ def setup():
     core.memory("textureEnemy2", core.Texture("./Image/Enemy2.png", (0, 0), 0, (50, 50)))
     core.memory("textureEnemy3", core.Texture("./Image/Enemy3.png", (0, 0), 0, (50, 50)))
     core.memory("textureEnemy4", core.Texture("./Image/Enemy4.png", (0, 0), 0, (50, 50)))
-    core.memory("textureBoss", core.Texture("./Image/Boss.png", (0, 0), 0, (50, 50)))
+
 
     core.memory("maPartie").addJoueur()
     core.memory("maPartie").addMissile()
