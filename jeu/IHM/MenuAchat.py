@@ -63,7 +63,7 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.MuniP:
                     self.barreameMuni.stat += 1
                     core.memory("maPartie").money -= self.MuniP
-                    self.MuniP *= 2
+                    self.MuniP *= 3
                     core.memory("maPartie").munitionMax += 1
 
         if self.DegatB.update1():
@@ -71,7 +71,7 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.DegatP:
                     self.barreDegat.stat += 1
                     core.memory("maPartie").money -= self.DegatP
-                    self.DegatP *= 2
+                    self.DegatP *= 8
                     core.memory("maPartie").degatMissile += 1
 
         if self.NBTB.update1():
@@ -79,7 +79,7 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.NBTP:
                     self.nbTir.stat += 1
                     core.memory("maPartie").money -= self.NBTP
-                    self.NBTP *= 2
+                    self.NBTP *= 4
                     core.memory("maPartie").NbTir += 1
 
         if self.VMB.update1():
@@ -87,7 +87,7 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.VMP:
                     self.vitesseMunition.stat += 1
                     core.memory("maPartie").money -= self.VMP
-                    self.VMP *= 2
+                    self.VMP *= 3
                     core.memory("maPartie").Vmissile *= 1.1
 
     def speedincreeseJoueur(self, Joueur):
