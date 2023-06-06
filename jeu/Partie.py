@@ -1,6 +1,6 @@
 from pygame import Vector2
 
-import core
+from jeu import core
 from jeu.Boss import Boss
 from jeu.Coin import Coin
 from jeu.Ennemi import Ennemi

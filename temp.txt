@@ -4,3 +4,5 @@ ccc, 34
 ddd, 4
 eee, 156
 jul, 192
+dyc, 5
+aaa, 4

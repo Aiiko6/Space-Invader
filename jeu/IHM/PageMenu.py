@@ -7,12 +7,17 @@ from jeu.IHM.Bouton1 import Bouton1
 
 class PageMenu:
     def __init__(self):  # constructeur
-        self.couleur = (255,255,255)
+        self.couleur = (0,0,0)
 
-        self.bp = Bouton1(300, 200, Etat.CHARGEMENT,True,"./Image/Play.png",(225,75))
-        self.bp1 = Bouton1(300, 300, Etat.OPTION)
-        self.bp2 = Bouton1(300, 400,Etat.COM)
-        self.bp3 = Bouton1(300, 500,Etat.DESTROY)
+        self.posbp = (400-(150/2),300-25)
+        self.posbp1 = (400-(270/2),375-25)
+        self.posbp2 = (400-(270/2),450-25)
+        self.posbp3 = (400-(270/2),525-25)
+
+        self.bp = Bouton1(self.posbp[0], self.posbp[1], Etat.CHARGEMENT,True,"./Image/Template.png",(150,50))
+        self.bp1 = Bouton1(self.posbp1[0], self.posbp1[1], Etat.OPTION,True,"./Image/Template.png",(270,50))
+        self.bp2 = Bouton1(self.posbp2[0], self.posbp2[1],Etat.COM,True,"./Image/Template.png",(270,50))
+        self.bp3 = Bouton1(self.posbp2[0], self.posbp2[1],True,"./Image/Template.png",(270,50))
 
 
     def update(self):
@@ -22,15 +27,18 @@ class PageMenu:
             core.memory("TexTitre").load()
         core.memory("TexTitre").show()
 
+        core.Draw.text(self.couleur, 'Space Invader ', (165, 80), 40, "./Font/8-BIT WONDER.TTF", False)
+
         self.bp.show()
         self.bp.updateRect()
+        core.Draw.text(self.couleur, 'Jouer ', (self.posbp[0], self.posbp[1]-13), 20, "./Font/8-BIT WONDER.TTF", False)
         self.bp1.show()
-        self.bp1.update()
-        core.Draw.text(self.couleur, 'Parametres ', (340, 280))
+        self.bp1.updateRect()
+        core.Draw.text(self.couleur, 'Parametres ', (self.posbp1[0]+5, self.posbp1[1]-13),20,"./Font/8-BIT WONDER.TTF",False)
         self.bp2.show()
-        self.bp2.update()
-        core.Draw.text(self.couleur, 'Commandes ', (340, 380))
+        self.bp2.updateRect()
+        core.Draw.text(self.couleur, 'Commandes ', (self.posbp2[0]+5, self.posbp2[1]-13),20,"./Font/8-BIT WONDER.TTF",False)
         self.bp3.show()
         self.bp3.update()
-        core.Draw.text(self.couleur, 'Quitter ', (340, 480))
+        core.Draw.text(self.couleur, 'Quitter ', (self.posbp3[0]+5, self.posbp3[1]-13),20,"./Font/8-BIT WONDER.TTF",False)
 
