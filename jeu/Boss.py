@@ -8,7 +8,7 @@ from jeu.Etat import Etat
 
 class Boss:
     def __init__(self):  # constructeur
-        self.vie = 100
+        self.vie = 200
         self.vitesse = 1.1
         self.vitesseY = 50
         self.position = (-5000, -5000)

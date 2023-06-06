@@ -30,7 +30,7 @@ class Partie:
         self.MissileAntiRebond = 1
         self.Coins = []
         self.Fires = []
-        self.money = 30
+        self.money = 0
         self.MenuAchat = MenuAchat()
         self.ActiveMenuAchat = False
         self.vieMob = 1
@@ -83,7 +83,7 @@ class Partie:
 
 
 
-        if self.spawnboss == 1:
+        if self.spawnboss == 1 and self.score >=50 :
             self.spawnboss = 1000
             self.addBoss()
         elif not self.boss.isAlive():
@@ -150,7 +150,7 @@ class Partie:
                             self.addFire(self.boss.position[0], self.boss.position[1])
                             self.boss.position = (-5000,-5000)
                             self.boss.alive = False
-                            self.score = self.score + 1
+                            self.score = self.score + 100
                         else:
                             self.boss.vie -= self.degatMissile
                         i.position = (1200, 1200)
@@ -209,15 +209,18 @@ class Partie:
 
     def addEnnemis(self):
         if len(self.ennemis) < self.nbEnnemis:
-            self.spawnboss = randint(1, 10)
+            self.spawnboss = randint(1, 100)
             self.ennemis.append(Ennemi(self.vieMob))
 
     def addBoss(self):
         self.boss.alive = True
+        self.boss.vie = 200
         self.ennemis.clear()
-        self.boss.position = (0,-1000)
+        self.boss.position = (0,-700)
 
     def restart(self):
+        self.boss = Boss()
+        self.MenuAchat.restart()
         core.memory("maPartie").addEnnemis()
         self.score = 0
         self.nbEnnemis = 3
@@ -231,7 +234,7 @@ class Partie:
         return self.score
 
     def addCoin(self, CoordX, CoordY):
-        Chance = randint(1, 2)
+        Chance = randint(1, 5)
         if Chance == 1:
             self.Coins.append(Coin(CoordX, CoordY))
 
