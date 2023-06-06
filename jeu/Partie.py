@@ -28,13 +28,14 @@ class Partie:
         self.MissileAntiRebond = 1
         self.Coins = []
         self.Fires = []
-        self.money = 50
+        self.money = 30
         self.MenuAchat = MenuAchat()
         self.ActiveMenuAchat = False
+        self.vieMob = 1
 
         self.Vmissile = 10
 
-        self.score = 0
+        self.score = 190
 
         core.memory("son", core.Sound("./Sound/piouu1.mp3", 1))
 
@@ -73,6 +74,8 @@ class Partie:
         core.Draw.text(self.couleur, 'Score: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
 
+        self.addEnnemis()
+
         if (self.MissileAntiRebond == 0) or (not core.getKeyPressList('SPACE')):
             self.MissileAntiRebond = 0
             if core.getKeyPressList('SPACE'):
@@ -106,27 +109,40 @@ class Partie:
                     i.alive = False
                     self.addCoin(e.position[0], e.position[1])
                     self.addFire(e.position[0], e.position[1])
-                    i.position = (1200, 1200)
-                    e.position = (randint(0, 700), 100)
-                    e.sens = 0
-                    self.score = self.score + 1
+                    if e in self.ennemis:
+                        index = self.ennemis.index(e)
+                        self.ennemis.pop(index)
+                        self.score = self.score + 1
+                        i.position = (1200, 1200)
+
                     print(str(self.score))
-                    if self.score > 10:
-                        self.nbEnnemis = self.score / 5 + 3
+                    if self.score <= 200:
+
+                        self.nbEnnemis = self.score / 20 + 3
+
+                    elif self.score > 200 and self.score <= 500:
+                        self.vieMob = 2
+                        self.nbEnnemis = self.score / 50 + 3
+
+                    elif self.score > 500 and self.score <= 900:
+                        self.vieMob = 3
+                        self.nbEnnemis = self.score / 90 + 3
+
+                    elif self.score > 900:
+                        self.vieMob = 4
+                        self.nbEnnemis = self.score / 90 + 3
+
             e.collisionJoueur(self.monVaisseau)
 
     def tirer(self):
         MissileAvaible = []
         Compteur = 0
 
-        print(self.munition)
-
         for i in self.monMissile:
             if not i.isAlive():
                 Compteur += 1
                 i.alive = True
                 MissileAvaible.append(i)
-            print(Compteur)
             if Compteur >= self.NbTir:
                 break
 
@@ -152,7 +168,8 @@ class Partie:
 
     def addEnnemis(self):
         if len(self.ennemis) < self.nbEnnemis:
-            self.ennemis.append(Ennemi())
+            print(self.vieMob)
+            self.ennemis.append(Ennemi(self.vieMob))
 
     def restart(self):
         core.memory("maPartie").addEnnemis()
