@@ -32,6 +32,7 @@ class Partie:
         self.MenuAchat = MenuAchat()
         self.ActiveMenuAchat = False
         self.vieMob = 1
+        self.degatMissile = 1
 
         self.Vmissile = 10
 
@@ -110,9 +111,13 @@ class Partie:
                     self.addCoin(e.position[0], e.position[1])
                     self.addFire(e.position[0], e.position[1])
                     if e in self.ennemis:
-                        index = self.ennemis.index(e)
-                        self.ennemis.pop(index)
-                        self.score = self.score + 1
+                        if e.vie <= self.degatMissile:
+                            index = self.ennemis.index(e)
+                            self.ennemis.pop(index)
+                            self.score = self.score + 1
+                        else:
+                            e.vie -= self.degatMissile
+
                         i.position = (1200, 1200)
 
                     print(str(self.score))
