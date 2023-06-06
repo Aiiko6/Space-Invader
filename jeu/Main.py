@@ -9,6 +9,7 @@ from jeu.IHM.PageChargement import PageChargement
 from jeu.IHM.PageCommande import PageCommande
 from jeu.IHM.PageGameOver import PageGameOver
 from jeu.IHM.PageGraphique import PageGraphique
+from jeu.IHM.PageLeaderboard import PageLeaderBoard
 from jeu.IHM.PageMenu import PageMenu
 from jeu.IHM.PageOption import PageOption
 from jeu.IHM.PageSauvegarde import PageSauvegarde
@@ -20,7 +21,7 @@ from jeu import core
 
 def setup():
 
-    core.fps = 600
+    core.fps = 60
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu", PageMenu())
     core.memory("PausePage", PauseMenu())
@@ -31,6 +32,7 @@ def setup():
     core.memory("SkinPage", PageSkin())
     core.memory("PageChargement", PageChargement())
     core.memory("PageSauvegarde", PageSauvegarde())
+    core.memory("PageLeaderBoard", PageLeaderBoard())
     #Declaration variable Partie
     core.memory("maPartie", Partie())
     core.WINDOW_SIZE = [800, 600]
@@ -111,6 +113,9 @@ def run():
 
     if core.memory('etat') == Etat.SAUVEGARDE:
         core.memory("PageSauvegarde").update()
+
+    if core.memory('etat') == Etat.LEADERBOARD:
+        core.memory("PageLeaderBoard").update()
 
 
 

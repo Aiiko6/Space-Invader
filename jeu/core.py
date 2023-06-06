@@ -337,6 +337,7 @@ class Sound:
         if not self.play:
             self.play = True
             self.thread=threading.Thread(target=self.playin(), args=(1,))
+            self.thread.run()
 
     def rewind(self):
         if self.play:
