@@ -14,3 +14,4 @@ class Etat(Enum):
     DESTROY = 9
     CHARGEMENT = 10
     SAUVEGARDE = 11
+    LEADERBOARD = 12

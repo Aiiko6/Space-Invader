@@ -7,8 +7,7 @@ class Classement():
         self.classement = []
 
     def getFile(self):
-        for i in self.classement:  #Vider le tableau pour MAJ
-            self.classement.pop()
+        self.classement.clear()
 
         nb_ligne = core.memory("gestionFichier").compterLigne()
         for i in range (nb_ligne):
@@ -28,6 +27,12 @@ class Classement():
         self.classement.sort(key=lambda Sauvegarde: Sauvegarde.score, reverse=True)
 
         for e in self.classement:
-            e.getSauvegarde()
+            txt = e.getSauvegarde()
+
+    def getScore(self,num):
+        self.trierTableau()
+        var = self.classement[num]
+        txt = var.getSauvegarde()
+        return txt
 
 

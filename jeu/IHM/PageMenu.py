@@ -13,6 +13,7 @@ class PageMenu:
         self.bp1 = Bouton1(300, 300, Etat.OPTION)
         self.bp2 = Bouton1(300, 400,Etat.COM)
         self.bp3 = Bouton1(300, 500,Etat.DESTROY)
+        self.bp4 = Bouton1(400, 500, Etat.LEADERBOARD)
 
 
     def update(self):
@@ -34,3 +35,5 @@ class PageMenu:
         self.bp3.update()
         core.Draw.text(self.couleur, 'Quitter ', (340, 480))
 
+        self.bp4.show()
+        self.bp4.update()

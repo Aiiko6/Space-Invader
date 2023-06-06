@@ -4,4 +4,4 @@ class Sauvegarde():
         self.score = int(score)
 
     def getSauvegarde(self):
-        print(self.nom + ',' + str(self.score))
+        return (self.nom) + ',' + str(self.score)

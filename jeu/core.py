@@ -268,24 +268,24 @@ class Draw:
             pygame.draw.line(surface, color, start_pos, end_pos, width)
             screen.blit(surface, (0, 0))
         else:
-            pygame.draw.line(core.screen, color, start_pos, end_pos, width)
+            pygame.draw.line(screen, color, start_pos, end_pos, width)
 
     def ellipse(color, rect, width=0):
 
         if len(color) > 3:
             shape_surf = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
             pygame.draw.ellipse(shape_surf, color, shape_surf.get_rect(), width)
-            core.screen.blit(shape_surf, rect)
+            screen.blit(shape_surf, rect)
         else:
-            pygame.draw.ellipse(core.screen, color, rect, width)
+            pygame.draw.ellipse(screen, color, rect, width)
 
     def arc(color, rect, start_angle, stop_angle, width=1):
         if len(color) > 3:
             shape_surf = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
             pygame.draw.arc(shape_surf, color, rect, start_angle, stop_angle, width)
-            core.screen.blit(shape_surf, rect)
+            screen.blit(shape_surf, rect)
         else:
-            pygame.draw.arc(core.screen, color, rect, start_angle, stop_angle, width)
+            pygame.draw.arc(screen, color, rect, start_angle, stop_angle, width)
 
 
     def lines(color, closed, points, width=1):
@@ -295,7 +295,7 @@ class Draw:
             pygame.draw.lines(surface, color, closed, points, width)
             screen.blit(surface, (0, 0))
         else:
-            pygame.draw.lines(core.screen, color, closed, points, width)
+            pygame.draw.lines(screen, color, closed, points, width)
 
     def polygon(color, points, width=0):
         if len(color) > 3:
@@ -304,9 +304,9 @@ class Draw:
             target_rect = pygame.Rect(min_x, min_y, max_x - min_x, max_y - min_y)
             shape_surf = pygame.Surface(target_rect.size, pygame.SRCALPHA)
             pygame.draw.polygon(shape_surf, color, [(x - min_x, y - min_y) for x, y in points])
-            core.screen.blit(shape_surf, target_rect)
+            screen.blit(shape_surf, target_rect)
         else:
-            pygame.draw.polygon(core.screen, color, points, width)
+            pygame.draw.polygon(screen, color, points, width)
 
     def text(color, texte, position, taille=30, font='Arial',Sys=True):
         pygame.font.init()
@@ -337,6 +337,7 @@ class Sound:
         if not self.play:
             self.play = True
             self.thread=threading.Thread(target=self.playin(), args=(1,))
+            self.thread.run()
 
     def rewind(self):
         if self.play:

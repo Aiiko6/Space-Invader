@@ -4,3 +4,7 @@ ccc, 34
 ddd, 4
 eee, 156
 jul, 192
+zaa, 8
+mwh, 14
+ger, 36
+ger, 41

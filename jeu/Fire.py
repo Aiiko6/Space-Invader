@@ -23,7 +23,7 @@ class Fire:
 
         self.timeToLive = self.timeToLive + 1
         self.position[1] = self.position[1]
-        core.memory("textureFire").setScalesize((20 - self.timeToLive) * 10, (20 - self.timeToLive) * 10)
+        core.memory("textureFire").setScalesize((2 + self.timeToLive) * 10, (2 + self.timeToLive) * 10)
 
         core.memory("textureFire").load()
         core.memory("textureFire").show()
