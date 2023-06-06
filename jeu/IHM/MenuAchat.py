@@ -18,16 +18,16 @@ class MenuAchat:
         self.nbTir = BarreAmelioration(325, 375)
         self.vitesseMunition = BarreAmelioration(325, 465)
 
-        self.MuniP = 1
+        self.MuniP = 2
         self.MuniB = Bouton1(255, 163, "")
 
-        self.DegatP = 1
+        self.DegatP = 2
         self.DegatB = Bouton1(335, 265, "")
 
-        self.NBTP = 1
+        self.NBTP = 2
         self.NBTB = Bouton1(600, 163, "")
 
-        self.VMP = 1
+        self.VMP = 2
         self.VMB = Bouton1(620, 265, "")
 
     def affichageMenu(self, VaisseauV):
@@ -63,7 +63,7 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.MuniP:
                     self.barreameMuni.stat += 1
                     core.memory("maPartie").money -= self.MuniP
-                    self.MuniP *= 2
+                    self.MuniP *= 3
                     core.memory("maPartie").munitionMax += 1
 
         if self.DegatB.update1():
@@ -71,7 +71,7 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.DegatP:
                     self.barreDegat.stat += 1
                     core.memory("maPartie").money -= self.DegatP
-                    self.DegatP *= 2
+                    self.DegatP *= 8
                     core.memory("maPartie").degatMissile += 1
 
         if self.NBTB.update1():
@@ -79,7 +79,7 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.NBTP:
                     self.nbTir.stat += 1
                     core.memory("maPartie").money -= self.NBTP
-                    self.NBTP *= 2
+                    self.NBTP *= 4
                     core.memory("maPartie").NbTir += 1
 
         if self.VMB.update1():
@@ -87,8 +87,28 @@ class MenuAchat:
                 if core.memory("maPartie").money >= self.VMP:
                     self.vitesseMunition.stat += 1
                     core.memory("maPartie").money -= self.VMP
-                    self.VMP *= 2
+                    self.VMP *= 3
                     core.memory("maPartie").Vmissile *= 1.1
 
     def speedincreeseJoueur(self, Joueur):
         Joueur.speed *= 1.3
+
+    def restart(self):
+
+        self.barreameMuni = BarreAmelioration(130, 375)
+        self.barreDegat = BarreAmelioration(130, 465)
+        self.nbTir = BarreAmelioration(325, 375)
+        self.vitesseMunition = BarreAmelioration(325, 465)
+
+        self.MuniP = 2
+        self.MuniB = Bouton1(255, 163, "")
+
+        self.DegatP = 2
+        self.DegatB = Bouton1(335, 265, "")
+
+        self.NBTP = 2
+        self.NBTB = Bouton1(600, 163, "")
+
+        self.VMP = 2
+        self.VMB = Bouton1(620, 265, "")
+
