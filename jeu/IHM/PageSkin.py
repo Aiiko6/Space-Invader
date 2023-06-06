@@ -1,7 +1,7 @@
 import pygame
 from pygame import Vector2
 
-import core
+from jeu import core
 from jeu.Etat import Etat
 from jeu.IHM.Bouton import Bouton
 
@@ -32,7 +32,7 @@ class PageSkin:
                                          (400 - (self.skinTailleList[self.selector][0]/2), 300 - (self.skinTailleList[self.selector][1]/2)), 0,
                                          self.skinTailleList[self.selector])
 
-        core.memory("TextureVaisseau", core.Texture(self.skinURLList[self.selector - 1], (0,0), 0, (self.skinTailleList[self.selector][0] - 50,self.skinTailleList[self.selector][1] - 50)))
+        core.memory("TextureVaisseau", core.Texture(self.skinURLList[self.selector - 1], (0, 0), 0, (self.skinTailleList[self.selector][0] - 50, self.skinTailleList[self.selector][1] - 50)))
 
         if not self.skinURLChoix.ready:
             self.skinURLChoix.load()

@@ -2,7 +2,7 @@ import random
 
 from pygame import Vector2
 
-import core
+from jeu import core
 from jeu.Etat import Etat
 
 
@@ -54,6 +54,7 @@ class Ennemi:
         if self.mass + Joueur.mass > distance.length():
             core.memory('etat', Etat.GAMEOVER)
             core.memory('PageGameOver').setScore()
+            core.memory('PageSauvegarde').setScore()
 
     def SetMob(self,vie):
         self.vie = vie

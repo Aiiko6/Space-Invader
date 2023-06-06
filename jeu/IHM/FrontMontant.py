@@ -1,7 +1,4 @@
-import pygame
 from pygame import mouse
-
-import core
 
 
 class frontMontant:

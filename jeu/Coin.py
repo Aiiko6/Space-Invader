@@ -1,6 +1,6 @@
 from pygame import Vector2
 
-import core
+from jeu import core
 
 
 class Coin:
@@ -18,7 +18,7 @@ class Coin:
 
         if not core.memory("textureCoins").ready:
             core.memory("textureCoins").load()
-        core.memory("textureCoins").pos = (self.position[0] - 15,self.position[1] - 12)
+        core.memory("textureCoins").pos = (self.position[0] - 15, self.position[1] - 12)
         core.memory("textureCoins").show()
 
         if self.position[1] > core.WINDOW_SIZE[1]:

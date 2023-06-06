@@ -2,7 +2,7 @@ import random
 
 from pygame import Vector2
 
-import core
+from jeu import core
 from jeu.Etat import Etat
 
 

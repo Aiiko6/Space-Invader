@@ -2,8 +2,8 @@ import sys
 
 import pygame
 
-import core
 from jeu.Etat import Etat
+from jeu.Gestionfichier import GestionFichier
 from jeu.IHM.FrontMontant import frontMontant
 from jeu.IHM.PageChargement import PageChargement
 from jeu.IHM.PageCommande import PageCommande
@@ -11,24 +11,26 @@ from jeu.IHM.PageGameOver import PageGameOver
 from jeu.IHM.PageGraphique import PageGraphique
 from jeu.IHM.PageMenu import PageMenu
 from jeu.IHM.PageOption import PageOption
+from jeu.IHM.PageSauvegarde import PageSauvegarde
 from jeu.IHM.PageSkin import PageSkin
 from jeu.IHM.PauseMenu import PauseMenu
+from jeu.Leaderboard.Classement import Classement
 from jeu.Partie import Partie
-
-
+from jeu import core
 
 def setup():
 
     core.fps = 600
     core.memory("etat", Etat.MENU)
-    core.memory("PageMenu",PageMenu())
+    core.memory("PageMenu", PageMenu())
     core.memory("PausePage", PauseMenu())
     core.memory("OptionPage", PageOption())
-    core.memory("PageGameOver",PageGameOver())
+    core.memory("PageGameOver", PageGameOver())
     core.memory("PageCommande", PageCommande())
     core.memory("GraphiPage", PageGraphique())
     core.memory("SkinPage", PageSkin())
     core.memory("PageChargement", PageChargement())
+    core.memory("PageSauvegarde", PageSauvegarde())
     #Declaration variable Partie
     core.memory("maPartie", Partie())
     core.WINDOW_SIZE = [800, 600]
@@ -56,7 +58,13 @@ def setup():
     core.memory("previous_mouse_state", False)
     core.memory("current_mouse_state", False)
 
-    core.memory("gestionFront",frontMontant())
+    core.memory("gestionFront", frontMontant())
+
+
+    #Classement
+    core.memory("gestionFichier",GestionFichier("../temp.txt"))
+    core.memory("Classement", Classement())
+    core.memory("Classement",).getFile()
 
 
 def run():
@@ -101,9 +109,12 @@ def run():
     if core.memory('etat') == Etat.CHARGEMENT:
         core.memory("PageChargement").update()
 
+    if core.memory('etat') == Etat.SAUVEGARDE:
+        core.memory("PageSauvegarde").update()
 
 
 
-core.main(setup,run)
+
+core.main(setup, run)
 
 

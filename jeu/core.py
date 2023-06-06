@@ -1,13 +1,10 @@
-import copy
 import inspect
 import sys
 import threading
-from math import *
-from random import *
 
 import pygame
 
-import core
+
 
 title = "Fenetre"
 bgColor = (0, 0, 0)
@@ -241,19 +238,19 @@ class Draw:
         if len(color) > 3:
             shape_surf = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
             pygame.draw.rect(shape_surf, color, shape_surf.get_rect())
-            core.screen.blit(shape_surf, rect)
+            screen.blit(shape_surf, rect)
         else:
-            pygame.draw.rect(core.screen, color, rect, width)
+            pygame.draw.rect(screen, color, rect, width)
 
     def circle(color, center, radius, width=0):
         if len(color) > 3:
             target_rect = pygame.Rect(center, (0, 0)).inflate((radius * 2, radius * 2))
             shape_surf = pygame.Surface(target_rect.size, pygame.SRCALPHA)
             pygame.draw.circle(shape_surf, color, (radius, radius), radius, width)
-            core.screen.blit(shape_surf, target_rect)
+            screen.blit(shape_surf, target_rect)
         else:
             if center[0]>0:
-                pygame.draw.circle(core.screen, color, center, radius, width)
+                pygame.draw.circle(screen, color, center, radius, width)
 
     def polyline(color, points, width=0):
         if len(color) > 3:
@@ -262,7 +259,7 @@ class Draw:
             pygame.draw.polygon(surface, color, points, width)
             screen.blit(surface, (0, 0))
         else:
-            pygame.draw.polygon(core.screen, color, points, width)
+            pygame.draw.polygon(screen, color, points, width)
 
     def line(color, start_pos, end_pos, width=1):
         if len(color) > 3:
@@ -390,13 +387,13 @@ class Texture:
     def show(self):
         if self.display:
             if self.box:
-                core.Draw.rect((0,255,0),(self.pos.x,self.pos.y,self.w,self.h),1)
+                Draw.rect((0, 255, 0), (self.pos.x, self.pos.y, self.w, self.h), 1)
             if self.ready:
                 self.sprit.set_alpha(self.alpha)
                 rotated_image = pygame.transform.rotate(self.sprit, self.angle)
                 new_rect = rotated_image.get_rect(center=self.sprit.get_rect(topleft=self.pos).center)
 
-                core.screen.blit(rotated_image, new_rect)
+                screen.blit(rotated_image, new_rect)
 
     def setScalesize(self,valx, valy):
         self.scaleSize = (valx,valy)
