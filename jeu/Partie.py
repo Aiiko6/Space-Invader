@@ -121,19 +121,19 @@ class Partie:
                         i.position = (1200, 1200)
 
                     print(str(self.score))
-                    if self.score <= 200:
+                    if self.score <= 50:
 
                         self.nbEnnemis = self.score / 20 + 3
 
-                    elif self.score > 200 and self.score <= 500:
+                    elif self.score > 50 and self.score <= 100:
                         self.vieMob = 2
                         self.nbEnnemis = self.score / 50 + 3
 
-                    elif self.score > 500 and self.score <= 900:
+                    elif self.score > 100 and self.score <= 200:
                         self.vieMob = 3
                         self.nbEnnemis = self.score / 90 + 3
 
-                    elif self.score > 900:
+                    elif self.score > 300:
                         self.vieMob = 4
                         self.nbEnnemis = self.score / 90 + 3
 
