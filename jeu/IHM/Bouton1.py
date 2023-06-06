@@ -1,8 +1,7 @@
 import pygame
 from pygame import Vector2
-import sys
 
-import core
+from jeu import core
 
 
 class Bouton1:

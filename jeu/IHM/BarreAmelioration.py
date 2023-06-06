@@ -1,6 +1,6 @@
 from pygame import Vector2
 
-import core
+from jeu import core
 
 
 class BarreAmelioration:

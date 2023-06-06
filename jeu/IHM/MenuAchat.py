@@ -1,4 +1,4 @@
-import core
+from jeu import core
 from jeu.IHM.BarreAmelioration import BarreAmelioration
 from jeu.IHM.Bouton1 import Bouton1
 

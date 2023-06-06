@@ -13,3 +13,4 @@ class Etat(Enum):
     COM = 8
     DESTROY = 9
     CHARGEMENT = 10
+    SAUVEGARDE = 11

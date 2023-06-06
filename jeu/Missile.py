@@ -1,4 +1,4 @@
-import core
+from jeu import core
 
 
 class Missile:

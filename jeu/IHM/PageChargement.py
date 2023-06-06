@@ -1,8 +1,7 @@
 import pygame
 
-import core
+from jeu import core
 from jeu.Etat import Etat
-from jeu.IHM.Bouton1 import Bouton1
 
 
 class PageChargement:
@@ -16,7 +15,7 @@ class PageChargement:
         self.mouse = pygame.mouse.get_pos()
         core.Draw.text(self.couleur, 'Chargement :', (300, 10))
 
-        core.Draw.rect((255,255,255),(100,400,600,100))
+        core.Draw.rect((255, 255, 255), (100, 400, 600, 100))
 
         self.timer = self.timer + self.vitesse
 
@@ -26,7 +25,7 @@ class PageChargement:
         if self.timer == 560:
             self.timer = 0
             self.vitesse = 10
-            core.memory("etat",Etat.JEU)
+            core.memory("etat", Etat.JEU)
 
         core.Draw.rect((15, 167, 15), (120, 420, self.timer, 60))
 
