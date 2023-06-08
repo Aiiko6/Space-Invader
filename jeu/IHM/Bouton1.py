@@ -43,6 +43,10 @@ class Bouton1:
             print(self.var.value)
             core.memory('etat', self.var)
 
+    def updateRect1(self):  #Renvoie bool
+        if self.distanceCheckRect() and core.memory('gestionFront').update():
+            return True
+
     def distanceCheck(self):
         self.mouse = pygame.mouse.get_pos()
         pos1 = Vector2(self.mouse)

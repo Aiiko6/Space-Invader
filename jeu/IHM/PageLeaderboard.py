@@ -7,7 +7,9 @@ class PageLeaderBoard:
     def __init__(self):  # constructeur
         self.couleur = (255, 255, 255)
 
-        self.bp = Bouton1(300, 500, Etat.MENU)
+        self.posbp1 = (420 - (190 / 2), 525 - 25)
+        self.bp1 = Bouton1(self.posbp1[0], self.posbp1[1], Etat.MENU, True, "./Image/Template.png", (190, 50))
+
         self.top1 = ""
         self.top2 = ""
         self.top3 = ""
@@ -34,6 +36,7 @@ class PageLeaderBoard:
         core.Draw.text(self.couleur, self.top3, (350, 200))
         core.Draw.text(self.couleur, self.top4, (350, 250))
         core.Draw.text(self.couleur, self.top5, (350, 300))
-        self.bp.show()
-        self.bp.update()
-        core.Draw.text(self.couleur, 'Retour ', (340, 480),20,"./Font/8-BIT WONDER.TTF",False)
+        self.bp1.show()
+        self.bp1.updateRect()
+        core.Draw.text((0,0,0), 'Retour ', (self.posbp1[0] + 5, self.posbp1[1] - 13), 20,
+                       "./Font/8-BIT WONDER.TTF", False)

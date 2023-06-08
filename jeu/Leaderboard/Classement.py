@@ -10,6 +10,7 @@ class Classement():
         self.classement.clear()
 
         nb_ligne = core.memory("gestionFichier").compterLigne()
+        print(nb_ligne)
         for i in range (nb_ligne):
             ligne = core.memory("gestionFichier").lireLigne(i)  #Recupere la ligne indice i
             #print(ligne)
