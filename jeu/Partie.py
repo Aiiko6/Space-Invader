@@ -46,6 +46,8 @@ class Partie:
 
         core.memory("son", core.Sound("./Sound/piouu1.mp3", 1))
 
+        self.nombreCoup = 0
+
     def addJoueur(self):
         self.monVaisseau = Vaisseau()
 
@@ -78,7 +80,7 @@ class Partie:
         self.MenuAchat.affichageMenu(self.monVaisseau)
 
     def updateJeu(self):
-        core.Draw.text(self.couleur, 'Score: ' + str(self.score), (10, 10))
+        core.Draw.text(self.couleur, 'Kill: ' + str(self.score), (10, 10))
         self.monVaisseau.deplacement()
 
 
@@ -94,6 +96,8 @@ class Partie:
             if core.getKeyPressList('SPACE'):
                 self.MissileAntiRebond = 1
                 self.tirer()
+                self.nombreCoup = self.nombreCoup + 1
+                print(self.nombreCoup)
 
         self.monVaisseau.show()
 
@@ -223,15 +227,13 @@ class Partie:
         self.MenuAchat.restart()
         core.memory("maPartie").addEnnemis()
         self.score = 0
+        self.nombreCoup = 0
         self.nbEnnemis = 3
         for i in range(len(self.monMissile)):
             self.monMissile.pop()
         for i in range(len(self.ennemis)):
             self.ennemis.pop()
         core.memory("maPartie").addMissile()
-
-    def get_score(self):
-        return self.score
 
     def addCoin(self, CoordX, CoordY):
         Chance = randint(1, 5)
@@ -257,3 +259,12 @@ class Partie:
             if i.getTimeToLive() == 15:
                 index = self.Fires.index(i)
                 self.Fires.pop(index)
+
+    def get_score(self):
+        return self.score
+
+    def get_nombreCoup(self):
+        return self.nombreCoup
+
+    def get_money(self):
+        return self.money

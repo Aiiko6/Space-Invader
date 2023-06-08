@@ -20,9 +20,6 @@ class Classement():
         self.trierTableau()
 
 
-    def addScore(self):
-        pass
-
     def trierTableau(self):
         self.classement.sort(key=lambda Sauvegarde: Sauvegarde.score, reverse=True)
 

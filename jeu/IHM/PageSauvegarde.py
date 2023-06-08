@@ -101,7 +101,7 @@ class PageSauvegarde:
 
 
     def setScore(self):
-        self.score = core.memory("maPartie").get_score()
+        self.score = core.memory("maPartie").get_score() + core.memory("maPartie").get_money()- core.memory("maPartie").get_nombreCoup()
 
 
 

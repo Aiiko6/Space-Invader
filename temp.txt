@@ -1,8 +1,6 @@
 aaa, 1
 bbb, 2
-ccc, 34
-ddd, 4
-eee, 156
-jul, 192
-dyc, 5
-aaa, 4
+zzz, -18
+awa, -32
+aga, -5
+aja, -21
