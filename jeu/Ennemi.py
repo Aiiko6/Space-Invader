@@ -33,7 +33,7 @@ class Ennemi:
             self.position = (self.position[0] - self.vitesse, self.position[1])
 
     def collisionMissile(self, missile):
-        pos1 = Vector2(self.position) +(25,25)
+        pos1 = Vector2(self.position) + (25,25)
         pos2 = Vector2(missile.position)
         distance = pos1 - pos2
         if self.mass + missile.mass > distance.length():

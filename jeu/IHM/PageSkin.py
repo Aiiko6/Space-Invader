@@ -4,13 +4,16 @@ from pygame import Vector2
 from jeu import core
 from jeu.Etat import Etat
 from jeu.IHM.Bouton import Bouton
+from jeu.IHM.Bouton1 import Bouton1
 
 
 class PageSkin:
     def __init__(self):  # constructeur
-        self.couleur = (255, 255, 255)
+        self.couleur = (0, 0, 0)
 
-        self.bp3 = Bouton(300, 500)
+        self.posbp3 = (400 - (190 / 2), 525 - 25)
+        self.bp3 = Bouton1(self.posbp3[0], self.posbp3[1], Etat.MENU, True, "./Image/Template.png", (190, 50))
+
         self.Flechedroite = Bouton(141, 275, True, "./Image/Fleche_droite.png")
         self.FlecheGauche = Bouton(657, 275, True, "./Image/Fleche_gauche.png")
         self.mouse = pygame.mouse.get_pos()
@@ -25,6 +28,10 @@ class PageSkin:
         self.mouse = core.getMouseLocation()
 
         self.bp3.show()
+        self.bp3.updateRect()
+        core.Draw.text(self.couleur, 'Retour ', (self.posbp3[0] + 5, self.posbp3[1] - 13), 20,
+                       "./Font/8-BIT WONDER.TTF", False)
+
         self.Flechedroite.show()
         self.FlecheGauche.show()
 
@@ -38,13 +45,9 @@ class PageSkin:
             self.skinURLChoix.load()
         self.skinURLChoix.show()
 
-        core.Draw.text(self.couleur, 'Retour ', (340, 480))
 
         if (self.startMenu == 0) or (not core.getMouseLeftClick()):
             self.startMenu = 0
-            if core.getMouseLeftClick() and self.distanceCheck(self.bp3):
-                self.startMenu = 1
-                core.memory('etat', Etat.OPTION)
             if core.getMouseLeftClick() and self.distanceCheck(self.Flechedroite):
                 self.startMenu = 1
                 self.selector = self.selector + 1

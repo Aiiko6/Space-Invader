@@ -4,40 +4,36 @@ from pygame import Vector2
 from jeu import core
 from jeu.Etat import Etat
 from jeu.IHM.Bouton import Bouton
+from jeu.IHM.Bouton1 import Bouton1
 
 
 class PauseMenu:
     def __init__(self):  # constructeur
-        self.couleur = (255, 255, 255)
-        self.bp = Bouton(300, 200)
-        self.bp1 = Bouton(300, 300)
+        self.couleur = (0, 0, 0)
+
+        self.posbp = (400 - (230 / 2), 300 - 25)
+        self.posbp1 = (400 - (140 / 2), 375 - 25)
+
+        self.bp = Bouton1(self.posbp[0], self.posbp[1], Etat.JEU, True, "./Image/Template.png", (230, 50))
+        self.bp1 = Bouton1(self.posbp1[0], self.posbp1[1], Etat.MENU, True, "./Image/Template.png", (140, 50))
+        print(self.bp.scale)
+
         self.mouse = core.getMouseLocation()
         self.massCursor = 2
         self.startMenu = 1
 
     def update(self):
         self.mouse = pygame.mouse.get_pos()
-        core.Draw.text(self.couleur, 'Pause :', (300, 10))
+
+        if not core.memory("TexTitre").ready:
+            core.memory("TexTitre").load()
+        core.memory("TexTitre").show()
+
+        core.Draw.text(self.couleur, 'Pause ', (300, 80), 40, "./Font/8-BIT WONDER.TTF", False)
         self.bp.show()
-        core.Draw.text(self.couleur, 'Reprendre ', (340, 180))
+        self.bp.updateRect()
+        core.Draw.text(self.couleur, 'Reprendre ', (self.posbp[0], self.posbp[1]-13), 20, "./Font/8-BIT WONDER.TTF", False)
         self.bp1.show()
-        core.Draw.text(self.couleur, 'Exit ', (340, 280))
+        self.bp1.updateRect()
+        core.Draw.text(self.couleur, 'Exit ', (self.posbp1[0]+7, self.posbp1[1]-13), 20, "./Font/8-BIT WONDER.TTF", False)
 
-        if (self.startMenu == 0) or (not core.getMouseLeftClick()):
-            self.startMenu = 0
-            if core.getMouseLeftClick() and self.distanceCheck(self.bp):
-                self.startMenu = 1
-                core.memory('etat', Etat.JEU)
-            if core.getMouseLeftClick() and self.distanceCheck(self.bp1):
-                self.startMenu = 1
-                core.memory("maPartie").restart()
-                core.memory('etat', Etat.MENU)
-
-    def distanceCheck(self, bouton):
-        pos1 = Vector2(self.mouse)
-        pos2 = Vector2(bouton.position)
-        distance = pos1 - pos2
-        if self.massCursor + bouton.mass > distance.length():
-            return True
-        else:
-            return False
