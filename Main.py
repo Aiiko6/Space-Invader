@@ -19,7 +19,8 @@ from jeu import core
 
 def setup():
 
-    core.fps = 600
+    core.fps = 60
+    core.setTitle("Space Invaders")
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu", PageMenu())
     core.memory("PausePage", PauseMenu())

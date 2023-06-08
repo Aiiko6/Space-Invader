@@ -9,6 +9,7 @@ class GestionFichier():
 
 
 
+
     def ecrireFichier(self,texte):
         self.file = open(self.nom,"a")
         self.file.write(texte + "\n")

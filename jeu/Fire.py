@@ -5,7 +5,7 @@ from jeu import core
 
 class Fire:
     def __init__(self,coordX, coordY):
-        self.position = Vector2(coordX,coordY)
+        self.position = Vector2(coordX -50 ,coordY -50)
         self.vitesse = 4
         self.gain = 1
         self.mass = 12
