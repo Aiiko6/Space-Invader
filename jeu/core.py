@@ -61,6 +61,10 @@ def setBgColor(c):
     global bgColor
     bgColor = c
 
+def setIcon(name):
+    icon = pygame.image.load(name)
+    pygame.display.set_icon(icon)
+
 
 def noLoop():
     global loopLock

@@ -20,6 +20,7 @@ from jeu import core
 def setup():
 
     core.fps = 60
+    core.setIcon("./Image/Incon.png")
     core.setTitle("Space Invaders")
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu", PageMenu())
