@@ -11,7 +11,7 @@ class PageSkin:
     def __init__(self):  # constructeur
         self.couleur = (0, 0, 0)
 
-        self.posbp3 = (400 - (190 / 2), 525 - 25)
+        self.posbp3 = (420 - (190 / 2), 525 - 25)
         self.bp3 = Bouton1(self.posbp3[0], self.posbp3[1], Etat.MENU, True, "./Image/Template.png", (190, 50))
 
         self.Flechedroite = Bouton(141, 275, True, "./Image/Fleche_droite.png")

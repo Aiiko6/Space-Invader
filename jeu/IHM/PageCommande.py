@@ -19,9 +19,12 @@ class PageCommande:
         core.memory("TexTitre").show()
 
         core.Draw.text(self.couleur, 'Commande', (200, 80),40, "./Font/8-BIT WONDER.TTF", False)
-        core.Draw.text((255, 255, 255), 'Gauche q ', (340, 180),20, "./Font/8-BIT WONDER.TTF", False)
-        core.Draw.text((255, 255, 255), 'Droite d ', (340, 280),20, "./Font/8-BIT WONDER.TTF", False)
-        core.Draw.text((255, 255, 255), 'Tirer espace', (340, 380),20, "./Font/8-BIT WONDER.TTF", False)
+        core.Draw.text((255, 255, 255), 'Gauche q ', (300, 230),20, "./Font/8-BIT WONDER.TTF", False)
+        core.Draw.text((255, 255, 255), 'Droite d ', (300, 270),20, "./Font/8-BIT WONDER.TTF", False)
+        core.Draw.text((255, 255, 255), 'Tirer espace', (300, 310),20, "./Font/8-BIT WONDER.TTF", False)
+        core.Draw.text((255, 255, 255), 'Amelioration e', (300, 350), 20, "./Font/8-BIT WONDER.TTF", False)
+        core.Draw.text((255, 255, 255), 'Pause ECHAPE', (300, 390), 20, "./Font/8-BIT WONDER.TTF", False)
+
 
         self.bp3.show()
         self.bp3.updateRect()

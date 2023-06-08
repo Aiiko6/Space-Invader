@@ -3,5 +3,3 @@ bbb, 2
 zzz, -18
 awa, -32
 aga, -5
-ccc, 0.0
-zxw, -5.0
