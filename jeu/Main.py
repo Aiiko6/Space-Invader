@@ -21,7 +21,7 @@ from jeu import core
 
 def setup():
 
-    core.fps = 60
+    core.fps = 600
     core.memory("etat", Etat.MENU)
     core.memory("PageMenu", PageMenu())
     core.memory("PausePage", PauseMenu())
