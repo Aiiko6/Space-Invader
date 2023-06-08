@@ -213,10 +213,11 @@ class Partie:
 
     def addEnnemis(self):
         if len(self.ennemis) < self.nbEnnemis:
-            self.spawnboss = randint(1, 100)
+            self.spawnboss = randint(1, 200)
             self.ennemis.append(Ennemi(self.vieMob))
 
     def addBoss(self):
+        self.spawnboss = 1000
         self.boss.alive = True
         self.boss.vie = 200
         self.ennemis.clear()
