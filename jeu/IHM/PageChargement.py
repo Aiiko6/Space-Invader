@@ -6,14 +6,18 @@ from jeu.Etat import Etat
 
 class PageChargement:
     def __init__(self):  # constructeur
-        self.couleur = (255, 255, 255)
+        self.couleur = (0, 0, 0)
         self.timer = 0
         self.vitesse = 10
 
     def update(self):
 
         self.mouse = pygame.mouse.get_pos()
-        core.Draw.text(self.couleur, 'Chargement :', (300, 10))
+        if not core.memory("TexTitre").ready:
+            core.memory("TexTitre").load()
+        core.memory("TexTitre").show()
+
+        core.Draw.text(self.couleur, 'Chargement ', (180, 80), 40, "./Font/8-BIT WONDER.TTF", False)
 
         core.Draw.rect((255, 255, 255), (100, 400, 600, 100))
 

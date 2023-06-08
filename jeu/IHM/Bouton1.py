@@ -56,8 +56,8 @@ class Bouton1:
     def distanceCheckRect(self):
         self.mouse = pygame.mouse.get_pos()
         pos1 = Vector2(self.mouse)
-        posF2 = Vector2(self.position[0] + self.scale[0],self.position[1] + self.scale[1])
-        pos2 = Vector2(self.position)
+        posF2 = Vector2(self.position[0] + self.scale[0],self.position[1] + (self.scale[1]/2))
+        pos2 = Vector2(self.position[0] ,self.position[1] - (self.scale[1]/2))
 
         if pos2.x < pos1.x < posF2.x and pos2.y < pos1.y < posF2.y:
             return True
