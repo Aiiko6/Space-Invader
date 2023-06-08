@@ -17,7 +17,7 @@ class PageMenu:
         self.bp = Bouton1(self.posbp[0], self.posbp[1], Etat.CHARGEMENT,True,"./Image/Template.png",(150,50))
         self.bp1 = Bouton1(self.posbp1[0], self.posbp1[1], Etat.OPTION,True,"./Image/Template.png",(270,50))
         self.bp2 = Bouton1(self.posbp2[0], self.posbp2[1],Etat.COM,True,"./Image/Template.png",(270,50))
-        self.bp3 = Bouton1(self.posbp2[0], self.posbp2[1],True,"./Image/Template.png",(270,50))
+        self.bp3 = Bouton1(self.posbp3[0], self.posbp3[1],Etat.DESTROY,True,"./Image/Template.png",(270,50))
 
 
     def update(self):
@@ -39,6 +39,6 @@ class PageMenu:
         self.bp2.updateRect()
         core.Draw.text(self.couleur, 'Commandes ', (self.posbp2[0]+5, self.posbp2[1]-13),20,"./Font/8-BIT WONDER.TTF",False)
         self.bp3.show()
-        self.bp3.update()
+        self.bp3.updateRect()
         core.Draw.text(self.couleur, 'Quitter ', (self.posbp3[0]+5, self.posbp3[1]-13),20,"./Font/8-BIT WONDER.TTF",False)
 
