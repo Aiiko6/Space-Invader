@@ -19,8 +19,8 @@ class PageSauvegarde:
         self.bp31 = Bouton1(450, 200, "")
         self.bp32 = Bouton1(450, 400, "")
 
-        self.posbpS = (570 - (190 / 2), 350 - 25)
-        self.bpS = Bouton1(self.posbpS[0], self.posbpS[1], Etat.MENU, True, "./Image/Template.png", (190, 50))
+        self.posbpS = (650 - (250 / 2), 350 - 25)
+        self.bpS = Bouton1(self.posbpS[0], self.posbpS[1], Etat.MENU, True, "./Image/Template.png", (290, 50))
 
         self.alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
                      "u", "v", "w", "x", "y", "z"]

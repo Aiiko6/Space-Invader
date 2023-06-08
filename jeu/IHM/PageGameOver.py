@@ -36,7 +36,7 @@ class PageGameOver:
         core.Draw.text(self.couleur, 'Kill ' + str(self.score), (275, 230))
         core.Draw.text(self.couleur, 'Nombre coup ' + str(self.nombreCoup), (275, 280))
         core.Draw.text(self.couleur, 'Nombre coins ' + str(self.money), (275, 330))
-        core.Draw.text(self.couleur, 'Score: kill + coin - (Nombre coup /2) ' + str(self.scoreMulti), (275, 380))
+        core.Draw.text(self.couleur, 'Score: kill + coin - (Nombre coup /2) :' + str(self.scoreMulti), (275, 380))
 
         self.bp4.show()
         self.bp4.updateRect()
