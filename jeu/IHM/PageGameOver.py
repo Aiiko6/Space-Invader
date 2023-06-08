@@ -16,7 +16,7 @@ class PageGameOver:
         self.scoreMulti =0
 
         self.posbp4 = (30, 570)
-        self.bp4 = Bouton1(self.posbp4[0], self.posbp4[1], Etat.LEADERBOARD, True, "./Image/Template.png", (275, 50))
+        self.bp4 = Bouton1(self.posbp4[0], self.posbp4[1], Etat.SAUVEGARDE, True, "./Image/Template.png", (275, 50))
 
 
     def update(self):
