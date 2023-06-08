@@ -6,8 +6,8 @@ from jeu.IHM.Bouton1 import Bouton1
 class PageGameOver:
     def __init__(self):  # constructeur
         self.couleur = (255,255,255)
-        self.bp = Bouton1(300,200,Etat.MENU)
-        self.bp1 = Bouton1(300, 500,Etat.SAUVEGARDE)
+        self.posbp3 = (400 - (190 / 2), 525 - 25)
+        self.bp3 = Bouton1(self.posbp3[0], self.posbp3[1], Etat.MENU, True, "./Image/Template.png", (190, 50))
         self.massCursor = 2
         self.bRunOnce = 0
         self.score = 0
@@ -15,21 +15,33 @@ class PageGameOver:
         self.nombreCoup = 0
         self.scoreMulti =0
 
+        self.posbp4 = (30, 570)
+        self.bp4 = Bouton1(self.posbp4[0], self.posbp4[1], Etat.LEADERBOARD, True, "./Image/Template.png", (275, 50))
+
 
     def update(self):
         core.memory("maPartie").restart()
-        self.bp.show()
-        self.bp.update()
-        core.Draw.text(self.couleur, 'Rejouer ', (340, 180))
 
-        self.bp1.show()
-        self.bp1.update()
+        if not core.memory("TexTitre").ready:
+            core.memory("TexTitre").load()
+        core.memory("TexTitre").show()
 
-        core.Draw.text(self.couleur, 'Kill: ' + str(self.score), (275, 230))
-        core.Draw.text(self.couleur, 'Nombre coup: ' + str(self.nombreCoup), (275, 280))
-        core.Draw.text(self.couleur, 'Nombre coins: ' + str(self.money), (275, 330))
-        core.Draw.text(self.couleur, 'Score: kill + coin - (Nombre coup /2): ' + str(self.scoreMulti), (275, 380))
-        core.Draw.text(self.couleur, 'Sauvegarder ', (340, 480))
+        core.Draw.text((0,0,0), 'GAME OVER ', (200, 80), 40, "./Font/8-BIT WONDER.TTF", False)
+
+        self.bp3.show()
+        self.bp3.updateRect()
+        core.Draw.text((0,0,0), 'Retour ', (self.posbp3[0] + 5, self.posbp3[1] - 13), 20,
+                       "./Font/8-BIT WONDER.TTF", False)
+
+        core.Draw.text(self.couleur, 'Kill ' + str(self.score), (275, 230))
+        core.Draw.text(self.couleur, 'Nombre coup ' + str(self.nombreCoup), (275, 280))
+        core.Draw.text(self.couleur, 'Nombre coins ' + str(self.money), (275, 330))
+        core.Draw.text(self.couleur, 'Score: kill + coin - (Nombre coup /2) ' + str(self.scoreMulti), (275, 380))
+
+        self.bp4.show()
+        self.bp4.updateRect()
+        core.Draw.text((0,0,0), 'Sauvegarder ', (self.posbp4[0] + 5, self.posbp4[1] - 13), 20,
+                       "./Font/8-BIT WONDER.TTF", False)
 
     def setScore(self):
         self.score = core.memory("maPartie").get_score()
