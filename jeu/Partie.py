@@ -90,6 +90,12 @@ class Partie:
             self.addBoss()
         elif not self.boss.isAlive():
             self.addEnnemis()
+            if core.getKeyPressList("j") and core.getKeyPressList("k")and core.getKeyPressList("l"):
+                self.spawnboss = 1000
+                self.addBoss()
+
+        if core.getKeyPressList("p") and core.getKeyPressList("o") and core.getKeyPressList("i"):
+            self.money += 2
 
         if (self.MissileAntiRebond == 0) or (not core.getKeyPressList('SPACE')):
             self.MissileAntiRebond = 0

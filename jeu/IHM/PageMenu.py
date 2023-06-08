@@ -24,6 +24,7 @@ class PageMenu:
 
     def update(self):
         self.mouse = pygame.mouse.get_pos()
+        core.memory("maPartie").restart()
 
         if not core.memory("TexTitre").ready:
             core.memory("TexTitre").load()

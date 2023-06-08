@@ -1,8 +1,0 @@
-aaa, -10
-aaa, -10
-aaa, -10
-aaa, -10
-aaa, -10
-aba, 0.5
-eaa, -0.5
-zzz, 0.0
