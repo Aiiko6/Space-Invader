@@ -11,8 +11,8 @@ class PauseMenu:
     def __init__(self):  # constructeur
         self.couleur = (0, 0, 0)
 
-        self.posbp = (400 - (230 / 2), 300 - 25)
-        self.posbp1 = (400 - (140 / 2), 375 - 25)
+        self.posbp = (430 - (230 / 2), 300 - 25)
+        self.posbp1 = (430 - (140 / 2), 375 - 25)
 
         self.bp = Bouton1(self.posbp[0], self.posbp[1], Etat.JEU, True, "./Image/Template.png", (230, 50))
         self.bp1 = Bouton1(self.posbp1[0], self.posbp1[1], Etat.MENU, True, "./Image/Template.png", (140, 50))

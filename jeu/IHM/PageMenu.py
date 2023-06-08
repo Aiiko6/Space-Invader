@@ -9,10 +9,10 @@ class PageMenu:
     def __init__(self):  # constructeur
         self.couleur = (0,0,0)
 
-        self.posbp = (400-(150/2),300-25)
-        self.posbp1 = (400-(140/2),375-25)
-        self.posbp2 = (400-(270/2),450-25)
-        self.posbp3 = (400-(190/2),525-25)
+        self.posbp = (420-(150/2),300-25)
+        self.posbp1 = (420-(140/2),375-25)
+        self.posbp2 = (420-(270/2),450-25)
+        self.posbp3 = (420-(190/2),525-25)
         self.posbp4 = (30,570)
 
         self.bp = Bouton1(self.posbp[0], self.posbp[1], Etat.CHARGEMENT,True,"./Image/Template.png",(150,50))
